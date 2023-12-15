@@ -41,8 +41,6 @@ PathoSync prioritizes accessibility, providing a user-friendly interface that em
 ## Table of Contents
 
 - [Getting Started](#getting-started)
-  - [Prerequisites](#prerequisites)
-  - [Installation](#installation)
 - [Usage](#usage)
 - [Built With](#built-with)
 
