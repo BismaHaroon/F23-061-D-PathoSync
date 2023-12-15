@@ -1,22 +1,8 @@
 # PathoSync: Enhancing Pathology with Synchronized AI
 
+<img width="900" alt="image" src="https://github.com/BismaHaroon/F23-061-D-PathoSync/assets/125575282/0dcd5060-a5c8-440e-b63e-7de91ac05283">
+
 PathoSync is a revolutionary project designed to transform the landscape of digital pathology by introducing a cutting-edge platform that seamlessly integrates artificial intelligence (AI) with the expertise of pathologists. This innovative solution aims to address the challenges inherent in conventional pathology tools, offering a user-friendly experience that elevates diagnostic accuracy and streamlines workflows for medical professionals.
-
-
-## Table of Contents
-
-- [Getting Started](#getting-started)
-  - [Prerequisites](#prerequisites)
-  - [Installation](#installation)
-- [Usage](#usage)
-- [Endpoints](#endpoints)
-- [Examples](#examples)
-- [Built With](#built-with)
-- [Contributing](#contributing)
-- [License](#license)
-- [Acknowledgments](#acknowledgments)
-
-## Getting Started
 
 ## Key Features
 ### Intuitive Interface
@@ -50,6 +36,16 @@ PathoSync prioritizes accessibility, providing a user-friendly interface that em
 - **Contrast Enhancement:** Enhances image contrast for improved visualization.
 - **Image Resizing:** Resizes images for standardized processing across the platform.
 - **Color Normalization:** Employs color normalization techniques for consistent color representation.
+
+
+
+## Table of Contents
+
+- [Getting Started](#getting-started)
+  - [Prerequisites](#prerequisites)
+  - [Installation](#installation)
+- [Usage](#usage)
+- [Built With](#built-with)
 
 ## Getting Started
 
@@ -180,10 +176,6 @@ To get started with PathoSync, follow the instructions below.
 6. **React Frontend and Flask Backend:**
    - Run the frontend and backend separately for a modular and scalable architecture.
    - Follow provided instructions to set up and start each component.
-
-
-## Examples
-<img width="900" alt="image" src="https://github.com/BismaHaroon/F23-061-D-PathoSync/assets/125575282/0dcd5060-a5c8-440e-b63e-7de91ac05283">
 
 
 ## Built With
