@@ -103,24 +103,26 @@ To get started with PathoSync, follow the instructions below.
    - Access the user-friendly upload interface.
    - Select the medical image file (png, jpg, jpeg, gif).
    - Confirm the upload, and PathoSync will standardize the image to 800x600 pixels.
+     
+2. **Image Preprocessing:**
+   - Benefit from de-noising algorithms for improved image clarity.
+   - Enhance image contrast for better visualization.
 
-2. **Annotation:**
+3. **Annotation:**
    - Engage in cellular annotation using NuClick for precise point annotations.
-   - Utilize SAm for bounding box annotations to enhance cellular annotation accuracy.
+   - Utilize SAM for bounding box annotations to enhance cellular annotation accuracy.
    - Perform tissue annotations with customizable rectangles, ellipses, lines, polygons, and freehand drawings.
    - Personalize colors and add labels to enhance annotation visibility and organization.
 
-3. **WSI Analysis:**
+4. **WSI Analysis:**
    - Upload Whole Slide Images for comprehensive pathology analysis.
    - Streamline preprocessing by efficiently extracting tiles for detailed examination.
 
-4. **Visualization:**
+5. **Visualization:**
    - Zoom in for visual magnification to inspect cellular and tissue structures in detail.
    - Apply tissue masking for enhanced visibility during the annotation process.
 
-5. **Image Preprocessing:**
-   - Benefit from de-noising algorithms for improved image clarity.
-   - Enhance image contrast for better visualization.
+
    - Resize images and employ color normalization techniques for consistent color representation.
 
 6. **React Frontend and Flask Backend:**
