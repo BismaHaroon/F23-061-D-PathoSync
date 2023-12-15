@@ -126,6 +126,7 @@ To get started with PathoSync, follow the instructions below.
 - [OpenCV](https://opencv.org/) - An open-source computer vision and machine learning software library, used for image processing tasks.
 - [Node.js](https://nodejs.org/) - A JavaScript runtime for executing JavaScript code on the server side, used for managing frontend dependencies.
 - [npm](https://www.npmjs.com/) - A package manager for JavaScript, used for installing and managing frontend libraries and packages.
+- [Meta: Segment Anything Model]([https://github.com/facebookresearch/segment-anything]) - An advanced segmentation model for precise annotation and region identification.
 
 These technologies were carefully selected to create a robust, scalable, and efficient platform that combines the strengths of various tools and frameworks for a seamless user experience in digital pathology.
 
