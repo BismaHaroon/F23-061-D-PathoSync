@@ -8,10 +8,16 @@ PathoSync is a revolutionary project designed to transform the landscape of digi
 ### Intuitive Interface
 PathoSync prioritizes accessibility, providing a user-friendly interface that empowers pathologists with varying technical expertise.
 
-### Image Upload and Preprocessing
+### Image Upload
 - **Upload Interface:** PathoSync features a user-friendly image upload interface for seamless transfer of medical images.
 - **File Handling:** Supports various image file types, including png, jpg, jpeg, and gif.
-- **Standard Resolution:** Images are standardized to a resolution of 800x600 pixels.
+- **Standard Resolution:** Images are standardized to a resolution of 600x400 pixels.
+
+### Image Preprocessing
+- **De-noising:** Includes de-noising algorithms to improve image clarity.
+- **Contrast Enhancement:** Enhances image contrast for improved visualization.
+- **Image Resizing:** Resizes images for standardized processing across the platform.
+- **Color Normalization:** Employs color normalization techniques for consistent color representation.
 
 ### Cellular Annotation
 - **NuClick:** Incorporates NuClick for point annotations and labeling at the cellular level.
@@ -30,13 +36,6 @@ PathoSync prioritizes accessibility, providing a user-friendly interface that em
 ### Visualization
 - **Visual Magnification:** Offers a visual magnification feature for detailed views of cellular and tissue structures.
 - **Tissue Masking:** Provides tissue masking capabilities for enhanced visibility and focus during the annotation process.
-
-### Image Preprocessing
-- **De-noising:** Includes de-noising algorithms to improve image clarity.
-- **Contrast Enhancement:** Enhances image contrast for improved visualization.
-- **Image Resizing:** Resizes images for standardized processing across the platform.
-- **Color Normalization:** Employs color normalization techniques for consistent color representation.
-
 
 
 ## Table of Contents
