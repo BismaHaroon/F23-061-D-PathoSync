@@ -66,7 +66,7 @@ To get started with PathoSync, follow the instructions below.
 
 1. Clone the repository.
    ```bash
-   git clone https://github.com/your-username/pathosync.git
+   git clone [https://github.com/your-username/pathosync.git](https://github.com/BismaHaroon/F23-061-D-PathoSync.git)
    cd pathosync
    ```
 
