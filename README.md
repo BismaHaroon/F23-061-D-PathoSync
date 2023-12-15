@@ -17,10 +17,8 @@ PathoSync is a revolutionary project designed to transform the landscape of digi
 - [Acknowledgments](#acknowledgments)
 
 ## Getting Started
-# PathoSync: Enhancing Pathology with Synchronized AI
 
 ## Key Features
-
 ### Intuitive Interface
 PathoSync prioritizes accessibility, providing a user-friendly interface that empowers pathologists with varying technical expertise.
 
@@ -31,7 +29,7 @@ PathoSync prioritizes accessibility, providing a user-friendly interface that em
 
 ### Cellular Annotation
 - **NuClick:** Incorporates NuClick for point annotations and labeling at the cellular level.
-- **SAm:** Utilizes SAm for bounding box annotations and labeling, enhancing cellular annotation accuracy.
+- **SAM:** Utilizes SAM for bounding box annotations and labeling, enhancing cellular annotation accuracy.
 
 ### Tissue Annotation
 - Annotations in the form of rectangles, ellipses, lines, polygons, and freehand drawings.
