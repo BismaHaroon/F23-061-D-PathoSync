@@ -2,32 +2,6 @@
 
 PathoSync is a revolutionary project designed to transform the landscape of digital pathology by introducing a cutting-edge platform that seamlessly integrates artificial intelligence (AI) with the expertise of pathologists. This innovative solution aims to address the challenges inherent in conventional pathology tools, offering a user-friendly experience that elevates diagnostic accuracy and streamlines workflows for medical professionals.
 
-Key Features:
-- **Intuitive Interface:**
-    PathoSync prioritizes accessibility, providing a user-friendly interface that empowers pathologists with varying technical expertise.
-- **Image Upload & Preprocessing**
-   **Upload Interface:** PathoSync features a user-friendly image upload interface for seamless transfer of medical images.
-   **File Handling:**  Supports various image file types, including png, jpg, jpeg, tif and svs.
-   **Standard Resolution:** Images are standardized to a resolution of 800x600 pixels.
-   **De-noising:** Includes de-noising algorithms to improve image clarity.
-   **Contrast Enhancement:** Enhances image contrast for improved visualization.
-   **Image Resizing:** Resizes images for standardized processing across the platform.
-   **Color Normalization:** Employs color normalization techniques for consistent color representation.
-- **Cellular Annotation**
-  **NuClick:** Incorporates NuClick for point annotations and labeling at the cellular level.
-  **SAM:** Utilizes SAm for bounding box annotations and labeling, enhancing cellular annotation accuracy.
-- **Tissue Annotation**
-   - Annotations in the form of rectangles, ellipses, lines, polygons, and freehand drawings.
-   - Selectable, resizable, movable annotations for different tissue structures.
-   -  Customizable Colors: Personalize annotation colors for better visualization.
-   -  abels and List of Labels: Allows labeling of tissue annotations with an associated list of labels.
-- **WSI Upload & Preprocessing**
-  **Image Upload:** Facilitates the upload of Whole Slide Images (WSI) for comprehensive pathology analysis.
-  **Preprocessing:** Streamlines WSI preprocessing by efficiently extracting tiles for detailed examination.
-- **Visualization**
-  **Visual Magnification:** Offers a visual magnification feature for detailed views of cellular and tissue structures.
-  **Tissue Masking:** Provides tissue masking capabilities for enhanced visibility and focus during the annotation process.
-
 
 ## Table of Contents
 
