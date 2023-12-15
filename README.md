@@ -137,12 +137,13 @@ To get started with PathoSync, follow the instructions below.
 - [PyTorch](https://pytorch.org/) - A deep learning library utilized for implementing cutting-edge AI capabilities.
 - [React](https://reactjs.org/) - A JavaScript library used for building the interactive and dynamic frontend.
 - [scikit-image](https://scikit-image.org/) - An image processing library in Python for image preprocessing tasks.
-- [histomicstk](https://digitalslidearchive.github.io/HistomicsTK/) - A toolkit for computational pathology, used for stain normalization and color manipulation.
+- [TIAToolbox]([https://digitalslidearchive.github.io/HistomicsTK/](https://github.com/TissueImageAnalytics/tiatoolbox) - A toolkit for computational pathology, used for stain normalization and color manipulation.
 - [NumPy](https://numpy.org/) - A fundamental package for scientific computing with Python, used for array operations.
 - [OpenCV](https://opencv.org/) - An open-source computer vision and machine learning software library, used for image processing tasks.
 - [Node.js](https://nodejs.org/) - A JavaScript runtime for executing JavaScript code on the server side, used for managing frontend dependencies.
 - [npm](https://www.npmjs.com/) - A package manager for JavaScript, used for installing and managing frontend libraries and packages.
 - [Meta: Segment Anything Model](https://github.com/facebookresearch/segment-anything) - An advanced segmentation model for precise annotation and region identification.
+- [NuClick](https://github.com/mostafajahanifar/nuclick_torch) - An advanced CNN-based approach to speed up collecting annotations for microscopic objects requiring minimum interaction from the annotator.
 
 These technologies were carefully selected to create a robust, scalable, and efficient platform that combines the strengths of various tools and frameworks for a seamless user experience in digital pathology.
 
