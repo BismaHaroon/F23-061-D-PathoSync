@@ -18,26 +18,37 @@ PathoSync prioritizes accessibility, providing a user-friendly interface that em
 - **Contrast Enhancement:** Enhances image contrast for improved visualization.
 - **Image Resizing:** Resizes images for standardized processing across the platform.
 - **Color Normalization:** Employs color normalization techniques for consistent color representation.
+  <img width="457" alt="image" src="https://github.com/BismaHaroon/F23-061-D-PathoSync/assets/125575282/11b62da9-1585-40dc-845b-73cf63d7a520">
+
 
 ### Cellular Annotation
 - **NuClick:** Incorporates NuClick for point annotations and labeling at the cellular level.
   <img width="672" alt="image" src="https://github.com/BismaHaroon/F23-061-D-PathoSync/assets/125575282/7717c11d-0069-4b47-8917-44500affa006">
 
 - **SAM:** Utilizes SAM for bounding box annotations and labeling, enhancing cellular annotation accuracy.
+  <img width="491" alt="image" src="https://github.com/BismaHaroon/F23-061-D-PathoSync/assets/125575282/115b9a90-bd6a-4eb2-9594-7b93f6d142d9">
+
 
 ### Tissue Annotation
 - Annotations in the form of rectangles, ellipses, lines, polygons, and freehand drawings.
 - Selectable, resizable, movable annotations for different tissue structures.
 - Customizable Colors: Personalize annotation colors for better visualization.
 - Labels and List of Labels: Allows labeling of tissue annotations with an associated list of labels.
+  ![image](https://github.com/BismaHaroon/F23-061-D-PathoSync/assets/125575282/14edcfdb-851b-4e98-9d7c-67bf492d9c60)
+
 
 ### WSI Upload & Preprocessing
 - **Image Upload:** Facilitates the upload of Whole Slide Images (WSI) for comprehensive pathology analysis.
 - **Preprocessing:** Streamlines WSI preprocessing by efficiently extracting tiles for detailed examination.
+  <img width="159" alt="image" src="https://github.com/BismaHaroon/F23-061-D-PathoSync/assets/125575282/18647568-d063-4728-afc6-a322ea29b99e">
+  <img width="571" alt="image" src="https://github.com/BismaHaroon/F23-061-D-PathoSync/assets/125575282/717ee6c5-73bf-4286-b083-bed37f90febb">
+
 
 ### Visualization
 - **Visual Magnification:** Offers a visual magnification feature for detailed views of cellular and tissue structures.
 - **Tissue Masking:** Provides tissue masking capabilities for enhanced visibility and focus during the annotation process.
+
+
 
 
 ## Table of Contents
