@@ -34,6 +34,7 @@ PathoSync prioritizes accessibility, providing a user-friendly interface that em
 - Selectable, resizable, movable annotations for different tissue structures.
 - Customizable Colors: Personalize annotation colors for better visualization.
 - Labels and List of Labels: Allows labeling of tissue annotations with an associated list of labels.
+  
   <img width="198" alt="image" src="https://github.com/BismaHaroon/F23-061-D-PathoSync/assets/125575282/9985ebca-2c3a-47ef-a7b7-1fb9e3f4983b">
 
 
