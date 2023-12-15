@@ -21,6 +21,8 @@ PathoSync prioritizes accessibility, providing a user-friendly interface that em
 
 ### Cellular Annotation
 - **NuClick:** Incorporates NuClick for point annotations and labeling at the cellular level.
+  <img width="672" alt="image" src="https://github.com/BismaHaroon/F23-061-D-PathoSync/assets/125575282/7717c11d-0069-4b47-8917-44500affa006">
+
 - **SAM:** Utilizes SAM for bounding box annotations and labeling, enhancing cellular annotation accuracy.
 
 ### Tissue Annotation
