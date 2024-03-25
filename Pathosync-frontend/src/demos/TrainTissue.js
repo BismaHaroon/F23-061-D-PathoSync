@@ -10,6 +10,7 @@ const PageContainer = styled.div`
 `;
 
 
+
 const ModelSelect = styled.select`
   ${tw`w-full p-3 border border-gray-300 rounded-lg text-gray-600`}
 `;
@@ -27,36 +28,45 @@ const ImageInput = styled.input`
 `;
 
 const FormContainer = styled.div`
-  ${tw`p-6 mt-6 rounded-lg shadow-lg bg-white`}
+  ${tw`p-6 mt-6 rounded-lg shadow-lg`}
+  background-color: #e6e6fa ;
 `;
 
 const FormTitle = styled.h3`
-  ${tw`text-lg font-semibold text-gray-800 mb-4`}
-  text-align: center;
+  ${tw`text-lg font-semibold text-gray-800 mb-2 mt-3`}
+  text-align: left;
 `;
 
 const FormSection = styled.div`
-  ${tw`mb-4`}
+  ${tw`mb-4 `}
+`;
+
+const ButtonContainer = styled.div`
+  ${tw`flex`}
 `;
 
 const SubmitButton = styled.button`
-  ${tw`absolute bottom-0  bg-blue-500 text-white font-bold py-2 px-4 rounded`}
+background-color: #37097d ;
+  ${tw` text-white font-bold py-2 px-4 rounded`}
   &:hover {
-    ${tw`bg-blue-600`}
+    background-color:#9400d3 ;
   }
 `;
 
 const AddClassButton = styled.button`
-  ${tw`bg-green-500 text-white font-bold py-2 px-4 rounded`}
+background-color: #37097d ;
+  ${tw` text-white font-bold py-2 px-4 rounded`}
+  margin-right: 10px; /* Add margin between Add Class and Upload & Submit */
   &:hover {
-    ${tw`bg-green-600`}
+    background-color:#9400d3 ;
   }
 `;
 
 const TrainButton = styled.button`
-  ${tw`bg-yellow-500 text-white font-bold py-2 px-4 rounded`}
+background-color: #37097d ;
+  ${tw` text-white font-bold py-2 px-4 rounded`}
   &:hover {
-    ${tw`bg-yellow-600`}
+    background-color:#9400d3
   }
 `;
 
@@ -238,9 +248,12 @@ const TrainTissue = () => {
                     />
                   </div>
                 ))}
-                <SubmitButton type="submit">Upload & Submit</SubmitButton>
-              </UploadForm>
+                <ButtonContainer>
               <AddClassButton onClick={addClass}>Add Class</AddClassButton>
+              <SubmitButton type="submit">Upload & Submit</SubmitButton>
+              </ButtonContainer>
+              </UploadForm>
+              
             </FormSection>
           )}
           {showAdvancedOptions && (
@@ -271,6 +284,7 @@ const TrainTissue = () => {
           )}
         </FormContainer>
       </PageContainer>
+      <Footer></Footer>
     </>
   );
 };
