@@ -1,0 +1,108 @@
+/* styles.css */
+
+.page-container {
+  margin-top: 8rem;
+  margin-bottom: 8rem;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 60rem;
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.subtitle {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #555;
+  margin-bottom: 1rem;
+}
+
+.model-select {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 0.5rem;
+  color: #666;
+  margin-bottom: 1rem;
+}
+
+.upload-form {
+  margin-top: 1rem;
+}
+
+.class-input,
+.image-input {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 0.5rem;
+  color: #666;
+  margin-bottom: 1rem;
+}
+
+.form-container {
+  padding: 1.5rem;
+  margin-top: 1.5rem;
+  border-radius: 1rem;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+}
+
+.form-title {
+  font-size: 1.125rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.form-section {
+  margin-bottom: 1rem;
+}
+
+.submit-button,
+.add-class-button,
+.train-button {
+  font-weight: bold;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 0.5rem;
+}
+
+.submit-button:hover,
+.add-class-button:hover,
+.train-button:hover {
+  cursor: pointer;
+}
+
+.submit-button {
+  background-color: #3498db;
+  color: #fff;
+}
+
+.add-class-button {
+  background-color: #27ae60;
+  color: #fff;
+}
+
+.train-button {
+  background-color: #f39c12;
+  color: #fff;
+}
+
+.epoch-select,
+.learning-rate-input,
+.batch-size-input {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 0.5rem;
+  color: #666;
+  margin-bottom: 1rem;
+}
