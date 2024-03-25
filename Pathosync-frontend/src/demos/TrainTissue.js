@@ -9,10 +9,20 @@ const PageContainer = styled.div`
   ${tw`my-8 mx-auto max-w-4xl`}
 `;
 
+const FileInputContainer = styled.div`
+    background-color: #ffff;
+    padding-top: 20px;
+    padding-left:20px;
+    padding-right:20px;
+    padding-bottom:10px;
+    margin-bottom: 20px;
+    
+  ${tw`border border-gray-300 rounded-lg`}
+`;
 
 
 const ModelSelect = styled.select`
-  ${tw`w-full p-3 border border-gray-300 rounded-lg text-gray-600`}
+  ${tw`w-full p-3 border border-gray-300 rounded-lg text-gray-600 mb-1`}
 `;
 
 const UploadForm = styled.form`
@@ -20,7 +30,7 @@ const UploadForm = styled.form`
 `;
 
 const ClassInput = styled.input`
-  ${tw`w-full p-3 border border-gray-300 rounded-lg text-gray-600 mb-4`}
+  ${tw`w-full p-3 border border-gray-300 rounded-lg text-gray-600 mb-1`}
 `;
 
 const ImageInput = styled.input`
@@ -235,17 +245,22 @@ const TrainTissue = () => {
                 />
                 {classes.map((classData, i) => (
                   <div key={i}>
-                    <ClassInput
-                      type="text"
-                      placeholder="Enter Class Name"
-                      value={classData.name}
-                      onChange={(e) => handleClassNameChange(e, i)}
-                    />
+                    <FormSection>
+                      <FormTitle>Class Data</FormTitle>
+                      <ClassInput
+                        type="text"
+                        placeholder="Enter Class Name"
+                        value={classData.name}
+                        onChange={(e) => handleClassNameChange(e, i)}
+                      />
+                    </FormSection>
+                    <FileInputContainer> {/* Add a container for the file input */}
                     <ImageInput
                       type="file"
                       multiple
                       onChange={(e) => handleImageUpload(i, e.target.files)}
                     />
+                  </FileInputContainer>
                   </div>
                 ))}
                 <ButtonContainer>
