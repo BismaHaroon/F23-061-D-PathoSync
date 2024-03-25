@@ -1,0 +1,278 @@
+import React, { useState } from "react";
+import tw from "twin.macro";
+import styled from "styled-components";
+import Header from "components/headers/light";
+import Footer from "components/footers/FiveColumnWithBackground";
+import "./TrainTissueStyles.css"; // Import CSS file
+
+const PageContainer = styled.div`
+  ${tw`my-8 mx-auto max-w-4xl`}
+`;
+
+
+const ModelSelect = styled.select`
+  ${tw`w-full p-3 border border-gray-300 rounded-lg text-gray-600`}
+`;
+
+const UploadForm = styled.form`
+  ${tw`mt-4`}
+`;
+
+const ClassInput = styled.input`
+  ${tw`w-full p-3 border border-gray-300 rounded-lg text-gray-600 mb-4`}
+`;
+
+const ImageInput = styled.input`
+  ${tw`w-full p-3 border border-gray-300 rounded-lg text-gray-600 mb-4`}
+`;
+
+const FormContainer = styled.div`
+  ${tw`p-6 mt-6 rounded-lg shadow-lg bg-white`}
+`;
+
+const FormTitle = styled.h3`
+  ${tw`text-lg font-semibold text-gray-800 mb-4`}
+  text-align: center;
+`;
+
+const FormSection = styled.div`
+  ${tw`mb-4`}
+`;
+
+const SubmitButton = styled.button`
+  ${tw`absolute bottom-0  bg-blue-500 text-white font-bold py-2 px-4 rounded`}
+  &:hover {
+    ${tw`bg-blue-600`}
+  }
+`;
+
+const AddClassButton = styled.button`
+  ${tw`bg-green-500 text-white font-bold py-2 px-4 rounded`}
+  &:hover {
+    ${tw`bg-green-600`}
+  }
+`;
+
+const TrainButton = styled.button`
+  ${tw`bg-yellow-500 text-white font-bold py-2 px-4 rounded`}
+  &:hover {
+    ${tw`bg-yellow-600`}
+  }
+`;
+
+const EpochSelect = styled.select`
+  ${tw`w-full p-3 border border-gray-300 rounded-lg text-gray-600 mb-4`}
+`;
+
+const LearningRateInput = styled.input`
+  ${tw`w-full p-3 border border-gray-300 rounded-lg text-gray-600 mb-4`}
+`;
+
+const BatchSizeInput = styled.input`
+  ${tw`w-full p-3 border border-gray-300 rounded-lg text-gray-600 mb-4`}
+`;
+
+const TrainTissue = () => {
+  const [selectedModel, setSelectedModel] = useState(""); 
+  const [showCustomClasses, setShowCustomClasses] = useState(false); 
+  const [classes, setClasses] = useState([{ name: "", images: [] }]);
+  const [datasetName, setDatasetName] = useState(""); // State to store the dataset name
+  const [showAdvancedOptions, setShowAdvancedOptions] = useState(false); // State to toggle showing advanced options
+  const [epochs, setEpochs] = useState(10); // State to store the number of epochs
+  const [learningRate, setLearningRate] = useState(0.0001); // State to store the learning rate
+  const [batchSize, setBatchSize] = useState(16); // State to store the batch size
+
+  // Function to handle model selection
+  const handleModelSelect = (e) => {
+    const model = e.target.value;
+    setSelectedModel(model);
+    setShowCustomClasses(model === "resnet" || model === "cnn"); 
+  };
+
+  // Function to handle uploading images for custom classes
+  const handleImageUpload = (classIndex, files) => {
+    const updatedClasses = [...classes];
+    updatedClasses[classIndex] = {
+      ...updatedClasses[classIndex],
+      images: files,
+    };
+    setClasses(updatedClasses);
+  };
+
+  // Function to handle form submission
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const formData = new FormData();
+    formData.append("dataset_name", datasetName); // Add the dataset name to the form data
+
+    for (let i = 0; i < classes.length; i++) {
+      const currentClass = classes[i];
+      for (let j = 0; j < currentClass.images.length; j++) {
+        const currentImage = currentClass.images[j];
+        formData.append("images", currentImage); // Append each image to the form data
+        formData.append("class_names", currentClass.name); // Append the class name to the form data
+      }
+    }
+
+    try {
+      const response = await fetch("http://127.0.0.1:5000/upload_with_class", {
+        method: "POST",
+        body: formData,
+      });
+
+      if (response.ok) {
+        console.log("Images uploaded and processed successfully");
+        setShowAdvancedOptions(true); // Show advanced options form after successful upload
+      } else {
+        console.error("Failed to upload images");
+      }
+    } catch (error) {
+      console.error("Error uploading images:", error);
+    }
+  };
+
+  // Function to add a new class
+  const addClass = () => {
+    setClasses([...classes, { name: "", images: [] }]);
+  };
+
+  // Function to handle input change for class name
+  const handleClassNameChange= (e, classIndex) => {
+    const updatedClasses = [...classes];
+    updatedClasses[classIndex] = {
+      ...updatedClasses[classIndex],
+      name: e.target.value,
+    };
+    setClasses(updatedClasses);
+  };
+
+  // Function to handle input change for dataset name
+  const handleDatasetNameChange = (e) => {
+    setDatasetName(e.target.value);
+  };
+
+  // Function to handle input change for number of epochs
+  const handleEpochsChange = (e) => {
+    setEpochs(parseInt(e.target.value));
+  };
+
+  // Function to handle input change for learning rate
+  const handleLearningRateChange = (e) => {
+    setLearningRate(parseFloat(e.target.value));
+  };
+
+  // Function to handle input change for batch size
+  const handleBatchSizeChange = (e) => {
+    setBatchSize(parseInt(e.target.value));
+  };
+
+  // Function to handle advanced options form submission (training)
+  const handleAdvancedOptionsSubmit = async (e) => {
+    e.preventDefault();
+
+    // Perform model training with advanced options
+    console.log("Model training started with the following advanced options:");
+    console.log("Epochs:", epochs);
+    console.log("Learning Rate:", learningRate);
+    console.log("Batch Size:", batchSize);
+
+    // You can make a POST request here to send the advanced options data to the backend for model training
+  };
+
+  const handleTrain = async (e) => {
+    e.preventDefault();
+  
+    try {
+      const response = await fetch("http://127.0.0.1:5000/train_tissue_cnn", {
+        method: "POST",
+      });
+  
+      if (response.ok) {
+        console.log("Model training started successfully");
+        // Optionally, you can handle success actions here
+      } else {
+        console.error("Failed to start model training");
+        // Optionally, you can handle failure actions here
+      }
+    } catch (error) {
+      console.error("Error starting model training:", error);
+      // Optionally, you can handle error actions here
+    }
+  };
+
+  return (
+    <>
+    <Header></Header>
+      <PageContainer>
+        <h1 className="title">Tissue Classification</h1>
+        <FormContainer>
+        <h2 className="subtitle">Model Architecture</h2>
+          <ModelSelect value={selectedModel} onChange={handleModelSelect}>
+            <option value="">Select Model Architecture</option>
+            <option value="resnet">ResNet</option>
+            <option value="cnn">CNN</option>
+          </ModelSelect>
+          {showCustomClasses && (
+            <FormSection>
+              <FormTitle>Upload Custom Classes</FormTitle>
+              <UploadForm onSubmit={handleSubmit}>
+                <ClassInput
+                  type="text"
+                  placeholder="Enter Dataset Name"
+                  value={datasetName}
+                  onChange={handleDatasetNameChange}
+                />
+                {classes.map((classData, i) => (
+                  <div key={i}>
+                    <ClassInput
+                      type="text"
+                      placeholder="Enter Class Name"
+                      value={classData.name}
+                      onChange={(e) => handleClassNameChange(e, i)}
+                    />
+                    <ImageInput
+                      type="file"
+                      multiple
+                      onChange={(e) => handleImageUpload(i, e.target.files)}
+                    />
+                  </div>
+                ))}
+                <SubmitButton type="submit">Upload & Submit</SubmitButton>
+              </UploadForm>
+              <AddClassButton onClick={addClass}>Add Class</AddClassButton>
+            </FormSection>
+          )}
+          {showAdvancedOptions && (
+            <FormSection>
+              <FormTitle>Advanced Options</FormTitle>
+              <form onSubmit={handleAdvancedOptionsSubmit}>
+                <EpochSelect value={epochs} onChange={handleEpochsChange}>
+                  {[5, 6, 7, 8, 9, 10].map((epoch) => (
+                    <option key={epoch} value={epoch}>{epoch}</option>
+                  ))}
+                </EpochSelect>
+                <LearningRateInput
+                  type="number"
+                  step="0.0001"
+                  placeholder="Learning Rate"
+                  value={learningRate}
+                  onChange={handleLearningRateChange}
+                />
+                <BatchSizeInput
+                  type="number"
+                  placeholder="Batch Size"
+                  value={batchSize}
+                  onChange={handleBatchSizeChange}
+                />
+                <TrainButton type="button" onClick={handleTrain}>Train</TrainButton>
+              </form>
+            </FormSection>
+          )}
+        </FormContainer>
+      </PageContainer>
+    </>
+  );
+};
+
+export default TrainTissue;
