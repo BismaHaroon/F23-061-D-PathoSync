@@ -45,7 +45,12 @@ https://github.com/BismaHaroon/F23-061-D-PathoSync/assets/125141049/76ed5b81-80b
 
 
 ### Tissue Annotation
-- Annotations in the form of rectangles, ellipses, lines, polygons, and freehand drawings.
+
+
+https://github.com/BismaHaroon/F23-061-D-PathoSync/assets/125141049/97635ba2-e7d5-4527-8c12-69ff0718c23d
+
+
+- Annotations in the form of rectangles, lines, and freehand drawings.
 - Selectable, resizable, movable annotations for different tissue structures.
 - Customizable Colors: Personalize annotation colors for better visualization.
 - Labels and List of Labels: Allows labeling of tissue annotations with an associated list of labels.
