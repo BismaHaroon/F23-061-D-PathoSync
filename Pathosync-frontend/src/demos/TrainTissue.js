@@ -5,6 +5,8 @@ import Header from "components/headers/light";
 import Footer from "components/footers/FiveColumnWithBackground";
 import "./TrainTissueStyles.css"; // Import CSS file
 
+
+
 const PageContainer = styled.div`
   ${tw`my-8 mx-auto max-w-4xl`}
 `;
@@ -92,6 +94,11 @@ const BatchSizeInput = styled.input`
   ${tw`w-full p-3 border border-gray-300 rounded-lg text-gray-600 mb-4`}
 `;
 
+const CsvInput = styled.input`
+  ${tw`w-full p-3 border border-gray-300 rounded-lg text-gray-600 mb-4`}
+`;
+
+
 const TrainTissue = () => {
   const [selectedModel, setSelectedModel] = useState(""); 
   const [showCustomClasses, setShowCustomClasses] = useState(false); 
@@ -101,13 +108,34 @@ const TrainTissue = () => {
   const [epochs, setEpochs] = useState(10); // State to store the number of epochs
   const [learningRate, setLearningRate] = useState(0.0001); // State to store the learning rate
   const [batchSize, setBatchSize] = useState(16); // State to store the batch size
+  const [showDatasetFields, setShowDatasetFields] = useState(false);
+  
 
-  // Function to handle model selection
-  const handleModelSelect = (e) => {
-    const model = e.target.value;
-    setSelectedModel(model);
-    setShowCustomClasses(model === "resnet" || model === "cnn"); 
+  const [csvFiles, setCsvFiles] = useState([]);
+
+  // Function to handle uploading CSV files
+  const handleCsvUpload = (files) => {
+    // Convert FileList to an array and update state
+    const csvFilesArray = Array.from(files);
+    setCsvFiles(csvFilesArray);
   };
+
+// Function to handle model selection
+const handleModelSelect = (e) => {
+  const model = e.target.value;
+  setSelectedModel(model);
+  
+  if (model === "cnn") {
+    setShowCustomClasses(true); // Show the custom classes form when CNN is selected
+    setShowDatasetFields(false); // Hide the dataset fields when CNN is selected
+  } else {
+    setShowCustomClasses(false); // Hide the custom classes form when ResNet is selected
+    setShowDatasetFields(true); // Show the dataset fields when ResNet is selected
+  }
+};
+
+
+  
 
   // Function to handle uploading images for custom classes
   const handleImageUpload = (classIndex, files) => {
@@ -221,6 +249,23 @@ const TrainTissue = () => {
     }
   };
 
+// RESNET 
+// Function to handle form submission for ResNet
+const handleResNetSubmit = async (e) => {
+  e.preventDefault();
+
+  // Here you can perform any client-side validation or other necessary actions
+
+  // For now, let's just log the dataset name and CSV files (if uploaded)
+  console.log("Dataset Name:", datasetName);
+  console.log("CSV Files:", csvFiles);
+
+  // Toggle the state to show advanced options
+  setShowAdvancedOptions(true);
+};
+
+
+
   return (
     <>
     <Header></Header>
@@ -233,6 +278,40 @@ const TrainTissue = () => {
             <option value="resnet">ResNet</option>
             <option value="cnn">CNN</option>
           </ModelSelect>
+
+          {/* New section for handling dataset information */}
+  {showDatasetFields && (
+    <FormSection>
+      <FormTitle>Dataset Information</FormTitle>
+      <ClassInput
+        type="text"
+        placeholder="Enter Dataset Name"
+        value={datasetName}
+        onChange={handleDatasetNameChange}
+      />
+      <FileInputContainer>
+        <FormTitle>Upload Image Files</FormTitle>
+        <ImageInput
+          type="file"
+          multiple
+          onChange={(e) => handleImageUpload(e.target.files)}
+        />
+      </FileInputContainer>
+      <FileInputContainer>
+        <FormTitle>Upload CSV File</FormTitle>
+        <CsvInput
+          type="file"
+          multiple  // Allow multiple files to be uploaded
+          onChange={(e) => handleCsvUpload(e.target.files)}
+        />
+      </FileInputContainer>
+      <ButtonContainer>
+      <SubmitButton type="submit" onClick={handleResNetSubmit}>Upload & Submit</SubmitButton>
+    </ButtonContainer>
+    </FormSection>
+  )}
+
+
           {showCustomClasses && (
             <FormSection>
               <FormTitle>Upload Custom Classes</FormTitle>
