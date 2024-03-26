@@ -13,6 +13,10 @@ PathoSync prioritizes accessibility, providing a user-friendly interface that em
 - **File Handling:** Supports various image file types, including png, jpg, jpeg, and gif.
 - **Standard Resolution:** Images are standardized to a resolution of 600x400 pixels.
 
+
+https://github.com/BismaHaroon/F23-061-D-PathoSync/assets/125141049/c82fc9b5-94e2-4c50-a00f-244a4e8b09ac
+
+
 ### Image Preprocessing
 - **De-noising:** Includes de-noising algorithms to improve image clarity.
 - **Contrast Enhancement:** Enhances image contrast for improved visualization.
