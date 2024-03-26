@@ -33,6 +33,10 @@ https://github.com/BismaHaroon/F23-061-D-PathoSync/assets/125141049/c82fc9b5-94e
   <img width="491" alt="image" src="https://github.com/BismaHaroon/F23-061-D-PathoSync/assets/125575282/115b9a90-bd6a-4eb2-9594-7b93f6d142d9">
 
 
+
+https://github.com/BismaHaroon/F23-061-D-PathoSync/assets/125141049/0e5538df-3bad-49a6-b7f6-53da6f390324
+
+
 ### Tissue Annotation
 - Annotations in the form of rectangles, ellipses, lines, polygons, and freehand drawings.
 - Selectable, resizable, movable annotations for different tissue structures.
@@ -59,7 +63,18 @@ https://github.com/BismaHaroon/F23-061-D-PathoSync/assets/125141049/c82fc9b5-94e
 - **Upload Custom Datasets:** Easily upload custom datasets for tailored analysis and model training.
 - **Build Custom Models:** Construct custom models to suit specific pathology requirements.
 - **Advanced Model Training Features:**  Utilize advanced model training features such as epochs, batch size, and learning rate for optimal results.
-  
+- 
+### Model Training
+## Tissue Classification - ConVNet
+
+
+https://github.com/BismaHaroon/F23-061-D-PathoSync/assets/125141049/40797cd5-6a52-4784-a76f-686bad20febe
+
+## Tissue Classification - ResNet
+
+
+https://github.com/BismaHaroon/F23-061-D-PathoSync/assets/125141049/9c189e33-622d-4f03-9cb0-b16c1c147320
+
 
 Cell Prediction
 Once trained, select models for cell prediction, upload test images, and view results instantly.
