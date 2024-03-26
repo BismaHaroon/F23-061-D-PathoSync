@@ -67,6 +67,15 @@ https://github.com/BismaHaroon/F23-061-D-PathoSync/assets/125141049/d6472c2b-45d
 - **Preprocessing:** Streamlines WSI preprocessing by efficiently extracting patches for detailed examination.
   <img width="571" alt="image" src="https://github.com/BismaHaroon/F23-061-D-PathoSync/assets/125575282/717ee6c5-73bf-4286-b083-bed37f90febb">
 
+### WSI Patch Annotations
+- **Tissue Prediction**
+
+https://github.com/BismaHaroon/F23-061-D-PathoSync/assets/125141049/3268db09-f364-4d75-863b-e64dcea162f0
+
+- **WSI Annotation**
+
+https://github.com/BismaHaroon/F23-061-D-PathoSync/assets/125141049/ea65a372-eb7f-4625-8784-ba093fdd4ec0
+
 
 ### Visualization
 - **Visual Magnification:** Offers a visual magnification feature for detailed views of cellular and tissue structures.
