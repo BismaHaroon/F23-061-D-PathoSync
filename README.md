@@ -51,7 +51,14 @@ PathoSync prioritizes accessibility, providing a user-friendly interface that em
 - **Visual Magnification:** Offers a visual magnification feature for detailed views of cellular and tissue structures.
 - **Tissue Masking:** Provides tissue masking capabilities for enhanced visibility and focus during the annotation process.
 
+### Customizable Cell Detection Pipeline
+- **Upload Custom Datasets:** Easily upload custom datasets for tailored analysis and model training.
+- **Build Custom Models:** Construct custom models to suit specific pathology requirements.
+- **Advanced Model Training Features:**  Utilize advanced model training features such as epochs, batch size, and learning rate for optimal results.
+  
 
+Cell Prediction
+Once trained, select models for cell prediction, upload test images, and view results instantly.
 
 
 ## Table of Contents
