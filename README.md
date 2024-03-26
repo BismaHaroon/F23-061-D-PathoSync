@@ -1,5 +1,3 @@
-
-https://github.com/BismaHaroon/F23-061-D-PathoSync/assets/125141049/7722f1ac-da53-4bb5-81e6-7912eaa94040
 # PathoSync: Enhancing Pathology with Synchronized AI
 
 <img width="900" alt="image" src="https://github.com/BismaHaroon/F23-061-D-PathoSync/assets/125575282/0dcd5060-a5c8-440e-b63e-7de91ac05283">
