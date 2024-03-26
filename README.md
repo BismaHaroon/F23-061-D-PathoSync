@@ -71,9 +71,7 @@ https://github.com/BismaHaroon/F23-061-D-PathoSync/assets/125575282/3b3df5ca-302
 - **Predict using saved models:** Once trained, select models for cell prediction, upload test images, and view results instantly.
 https://github.com/BismaHaroon/F23-061-D-PathoSync/assets/125575282/170c3978-da67-4b68-9c2f-7e699fe6e6ec
 
-### Model Training
-
-## Tissue Classification - ConVNet
+## Customizable Tissue Classification Pipeline- ConVNet
 
 
 https://github.com/BismaHaroon/F23-061-D-PathoSync/assets/125141049/40797cd5-6a52-4784-a76f-686bad20febe
