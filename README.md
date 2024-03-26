@@ -104,10 +104,18 @@ https://github.com/BismaHaroon/F23-061-D-PathoSync/assets/125141049/70d796fa-1fc
 
 -**Advanced Model Training Features:** PathoSync provides the capability to input advanced model training features such as epochs, batch size, and learning rate, enabling users to fine-tune their models for optimal performance and desired results.
 **ConVNet**
-https://github.com/BismaHaroon/F23-061-D-PathoSync/assets/125141049/40797cd5-6a52-4784-a76f-686bad20febe
+
+
+https://github.com/BismaHaroon/F23-061-D-PathoSync/assets/125141049/b91316ae-1ec6-4a0d-843f-0247713b5ae9
+
+
 
 **ResNet**
-https://github.com/BismaHaroon/F23-061-D-PathoSync/assets/125141049/9c189e33-622d-4f03-9cb0-b16c1c147320
+
+
+https://github.com/BismaHaroon/F23-061-D-PathoSync/assets/125141049/b48fede8-8a0b-4bdb-a061-295161da3559
+
+
 
 ## Tissue Classification
 - Once the model is trained, it is saved and can be conveniently selected for prediction tasks.
