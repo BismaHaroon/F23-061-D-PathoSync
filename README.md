@@ -30,9 +30,10 @@ https://github.com/BismaHaroon/F23-061-D-PathoSync/assets/125141049/c82fc9b5-94e
   <img width="672" alt="image" src="https://github.com/BismaHaroon/F23-061-D-PathoSync/assets/125575282/7717c11d-0069-4b47-8917-44500affa006">
 
 - **SAM:** Utilizes SAM for bounding box annotations and labeling, enhancing cellular annotation accuracy.
+https://github.com/BismaHaroon/F23-061-D-PathoSync/assets/125141049/0e5538df-3bad-49a6-b7f6-53da6f390324
   <img width="491" alt="image" src="https://github.com/BismaHaroon/F23-061-D-PathoSync/assets/125575282/115b9a90-bd6a-4eb2-9594-7b93f6d142d9">
   
-https://github.com/BismaHaroon/F23-061-D-PathoSync/assets/125141049/0e5538df-3bad-49a6-b7f6-53da6f390324
+
 
 
 ### Tissue Annotation
