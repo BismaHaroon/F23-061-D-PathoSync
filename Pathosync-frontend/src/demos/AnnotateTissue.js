@@ -18,11 +18,10 @@ const App = () => {
   const [labelText, setLabelText] = useState('');
   const [annotations, setAnnotations] = useState([]); // Store annotation objects
   const canvasRef = useRef(null);
-
-
   const [annotationColor, setAnnotationColor] = useState('#FF0000'); // Default color
-
   const { processedImage } = useParams();
+
+
   console.log('processedImage:', processedImage);
   const [imageUrl, setImageUrl] = useState(null);
   useEffect(() => {
@@ -30,6 +29,13 @@ const App = () => {
   }, [processedImage]);
 
 //////////////zoom///////////////////////////
+
+
+
+
+///////////////////////////////////////////////////
+
+
   const [zoomLevel, setZoomLevel] = useState(1);
 
   const handleZoomIn = () => {
@@ -49,13 +55,101 @@ const App = () => {
   };
 
 
+  const handleResetZoom = () => {
+    if (canvas) {
+      canvas.setViewportTransform([1, 0, 0, 1, 0, 0]); // Reset zoom and pan
+      setZoomLevel(1); // Reset zoom level state
+    }
+  };
+
+  /////////////Panning///////////////
+
+// Add a state variable to track whether an annotation is being moved or modified
+const [annotationInProgress, setAnnotationInProgress] = useState(false);
+
+// Function to handle annotation movement start
+const handleAnnotationMovementStart = () => {
+  setAnnotationInProgress(true);
+};
+
+// Function to handle annotation movement end
+const handleAnnotationMovementEnd = () => {
+  setAnnotationInProgress(false);
+};
+
+useEffect(() => {
+  // Add event listeners to detect annotation movement start and end
+  if (canvas) {
+    canvas.on('object:moving', handleAnnotationMovementStart);
+    canvas.on('object:scaling', handleAnnotationMovementStart);
+    canvas.on('object:rotating', handleAnnotationMovementStart);
+    canvas.on('object:modified', handleAnnotationMovementEnd);
+  }
+
+  // Remove event listeners on cleanup
+  return () => {
+    if (canvas) {
+      canvas.off('object:moving', handleAnnotationMovementStart);
+      canvas.off('object:scaling', handleAnnotationMovementStart);
+      canvas.off('object:rotating', handleAnnotationMovementStart);
+      canvas.off('object:modified', handleAnnotationMovementEnd);
+    }
+  };
+}, [canvas]);
+
+// Function to handle panning
+const handlePan = (opt) => {
+  if (!annotationInProgress && canvas) {
+    const delta = opt.e.deltaY;
+    const zoom = canvas.getZoom();
+    let zoomFactor = 0.95; // Adjust the zoom factor
+
+    if (delta > 0) {
+      zoomFactor = 1.05;
+    }
+
+    const newZoom = zoom * zoomFactor;
+    canvas.zoomToPoint({ x: opt.e.offsetX, y: opt.e.offsetY }, newZoom);
+    opt.e.preventDefault();
+    opt.e.stopPropagation();
+  }
+};
+
+useEffect(() => {
+  if (canvas) {
+    // Add event listener for panning
+    canvas.on('mouse:wheel', handlePan);
+
+    return () => {
+      // Remove event listener on cleanup
+      canvas.off('mouse:wheel', handlePan);
+    };
+  }
+}, [canvas, annotationInProgress]);
+
+  
+  // Adjusted to calculate relative coordinates
+  const calculateRelativeCoordinates = (canvasPoint) => {
+    const imageObj = canvas.backgroundImage;
+    if (!imageObj) return canvasPoint; // Fallback if no background image
+
+    const zoom = canvas.getZoom();
+    const scaleX = imageObj.scaleX;
+    const scaleY = imageObj.scaleY;
+    const left = imageObj.left;
+    const top = imageObj.top;
+
+    const relativeX = (canvasPoint.x - left) / (zoom * scaleX);
+    const relativeY = (canvasPoint.y - top) / (zoom * scaleY);
+    return { x: relativeX, y: relativeY };
+  };
+
   ////////////////////////////////////////
   const addPolygon = () => {
     if (canvas) {
       let points = [];
       let polygon = null;
       let isDrawing = true;
-      
   
       const mouseDownHandler = (options) => {
         if (isDrawing) {
@@ -69,7 +163,7 @@ const App = () => {
               stroke: annotationColor,
               strokeWidth: 1,
               fill: hexToRGBA(annotationColor, 0.3),
-              selectable: false,
+              selectable: false, // Set selectable to false initially
               objectCaching: false,
               perPixelTargetFind: true,
             });
@@ -93,20 +187,29 @@ const App = () => {
         canvas.off('mouse:down', mouseDownHandler);
         canvas.off('mouse:move', mouseMoveHandler);
         canvas.off('mouse:dblclick', doubleClickHandler);
-  
-        polygon.set({ selectable: true });
-
-        const annotation = { type: 'Polygon', label: labelText, object: polygon };
+      
+        polygon.set({ selectable: true }); // Set selectable to true after drawing is finished
+        
+        // Convert polygon points to absolute coordinates if necessary
+        const absolutePoints = polygon.points.map(p => ({
+          x: p.x + polygon.left,
+          y: p.y + polygon.top
+        }));
+        const id = `polygon-${Date.now()}-${Math.random()}`; // Generate a unique ID
+        const annotation = { id, type: 'Polygon', label: labelText, points: absolutePoints };
+      
         setAnnotations(prevAnnotations => [...prevAnnotations, annotation]);
-        polygon.set({ selectable: true, movable: true });
+      
         canvas.renderAll();
       };
+      
   
       canvas.on('mouse:down', mouseDownHandler);
       canvas.on('mouse:move', mouseMoveHandler);
       canvas.on('mouse:dblclick', doubleClickHandler);
     }
   };
+  
 
 
   //////////////////////////////////////
@@ -140,41 +243,72 @@ const App = () => {
       const handlePathCreated = (e) => {
         if (canvas.isDrawingMode) {
           const path = e.path;
-          const points = path.path.map(p => ({ x: p[1], y: p[2] }));
-  
-          // Close the path to form a polygon
+          const pathData = path.path;
+          const points = [];
+          
+          // Convert path data to points at regular intervals
+          for (let i = 0; i < pathData.length; i += 5) {
+            points.push({
+              x: pathData[i][1],
+              y: pathData[i][2]
+            });
+          }
+          
+          // Create a new polygon from the points
           const polygon = new fabric.Polygon(points, {
-            fill: hexToRGBA(annotationColor, 0.3), // Shaded fill color
+            fill: hexToRGBA(annotationColor, 0.3),
             stroke: annotationColor,
             strokeWidth: 1,
             selectable: true,
-            movable: true,
+            objectCaching: false,
           });
   
-          canvas.remove(path); // Remove the freehand path
-          canvas.add(polygon); // Add the closed shape
-          canvas.isDrawingMode = false; // Exit drawing mode
+          // Remove the freehand path
+          canvas.remove(path);
+          // Add the closed shape as a polygon for uniform handling
+          canvas.add(polygon);
+          canvas.isDrawingMode = false;
   
-          // Capture the current label text
-          const currentLabel = labelText;
-        
-        // Reset the labelText state if necessary
-         setLabelText('');
-
-          const annotation = { type: 'Freehand', label: labelText, object: polygon };
+          // Store the annotation with its type and points
+          const annotation = { type: 'Freehand', label: labelText, points: points };
           setAnnotations(prevAnnotations => [...prevAnnotations, annotation]);
           setLabelText('');
           canvas.renderAll();
         }
       };
   
+      // Listen for path creation events
       canvas.on('path:created', handlePathCreated);
   
+      const handlePathModified = (e) => {
+        const path = e.target;
+        const annotationIndex = annotations.findIndex(annot => annot.object === path);
+      
+        if (annotationIndex !== -1 && annotations[annotationIndex].type === 'Freehand') {
+          const updatedAnnotations = [...annotations];
+          const polygonPoints = path.path.map(p => ({ x: p[1], y: p[2] }));
+      
+          // Update the corresponding polygon's points
+          updatedAnnotations[annotationIndex].object.set({ points: polygonPoints });
+          updatedAnnotations[annotationIndex].points = polygonPoints;
+          setAnnotations(updatedAnnotations);
+        }
+      };
+      
+      
+  
+      // Listen for path modification events
+      canvas.on('path:modified', handlePathModified);
+  
       return () => {
+        // Cleanup by removing the event listener
         canvas.off('path:created', handlePathCreated);
+        canvas.off('path:modified', handlePathModified);
       };
     }
-  }, [canvas, labelText]);
+  }, [canvas, labelText, annotationColor, annotations]);
+  
+  
   
   
   /////////////////////////////////////
@@ -182,17 +316,16 @@ const App = () => {
 
   const saveAnnotatedImage = () => {
     if (canvas) {
-      const imageData = canvas.toDataURL('image/png'); // Convert canvas data to base64
-  
-      // Generate a unique image ID using the current datetime
+      const imageData = canvas.toDataURL('image/png');
       const imageID = `image-${new Date().toISOString()}`;
   
       const annotationsData = annotations.map((annot, index) => ({
         imageID: imageID,
-        patchID: `patch-${index}`, // Assuming each annotation is given a sequential patch ID
+        patchID: `patch-${index}`,
         type: annot.type,
-        label: annot.label
-        // coordinates: annot.coordinates // include this if you manage to get coordinates working
+        label: annot.label,
+        // Handle coordinate formatting based on type here
+        coordinates: formatCoordinatesForAnnotation(annot) // You'll need to implement this based on your data structure
       }));
   
       axios.post('http://127.0.0.1:5000/save-annotated-image', {
@@ -207,6 +340,7 @@ const App = () => {
       });
     }
   };
+  
   
   
   ////////////////////////////////////
@@ -242,10 +376,11 @@ const App = () => {
         top: 100,
         fill: hexToRGBA(annotationColor, 0.3),
         stroke: annotationColor,
-        strokeWidth: 1,
+        strokeWidth: 0.2,
         width: 50,
         height: 50,
         selectable: true,
+        
       });
   
       const annotation = { type: 'Rect', label: labelText, object: rect };
@@ -291,32 +426,31 @@ const addEllipse = () => {
 
 const addLine = () => {
   if (canvas) {
-    const line = new fabric.Line([50, 50, 200, 200], {
+    // Coordinates for line start and end points
+    const lineCoordinates = [50, 50, 200, 200];
+    const line = new fabric.Line(lineCoordinates, {
       fill: 'transparent',
       stroke: annotationColor,
       strokeWidth: 1,
       selectable: true,
     });
 
-    const annotation = { type: 'Line', label: labelText, object: line };
-    const text = new fabric.Text(labelText, {
-      left: 50, // Adjust as needed
-      top: 50, // Adjust as needed
-      fontSize: 30,
-      fill: 'black',
-    });
-
     canvas.add(line);
     canvas.renderAll();
+
+    const annotation = {
+      type: 'Line',
+      label: labelText,
+      coordinates: [{x: line.x1, y: line.y1}, {x: line.x2, y: line.y2}], // Store start and end points
+      object: line // Storing the fabric object may not be necessary depending on your implementation
+    };
 
     setAnnotations(prevAnnotations => [...prevAnnotations, annotation]);
     setLabelText('');
   }
 };
 
-  
 
-  // Add other annotation functions (dots, lines, polygons) similarly
 
   const deleteSelected = () => {
     if (canvas) {
@@ -328,17 +462,47 @@ const addLine = () => {
         if (textObj) {
           canvas.remove(textObj);
         }
-  
-        // Update the annotations state
-        const filteredAnnotations = annotations.filter(item => item.object !== activeObject);
-        setAnnotations(filteredAnnotations);
-  
+
+        // Find the index of the annotation corresponding to the deleted object
+        const deletedAnnotationIndex = annotations.findIndex(item => item.object === activeObject);
+
+        if (deletedAnnotationIndex !== -1) {
+          // Remove the annotation from the annotations array
+          const updatedAnnotations = [...annotations];
+          updatedAnnotations.splice(deletedAnnotationIndex, 1);
+          setAnnotations(updatedAnnotations);
+        } else {
+          // Check if the active object is a freehand or polygon object
+          if (activeObject.type === 'path' || activeObject.type === 'polygon') {
+            // Search for the associated annotation by points
+            const points = activeObject.type === 'path' ? activeObject.path : activeObject.points;
+            const deletedAnnotationIndexByPoints = annotations.findIndex(item => {
+              if (item.points.length !== points.length) return false;
+              for (let i = 0; i < points.length; i++) {
+                if (item.points[i].x !== points[i].x || item.points[i].y !== points[i].y) {
+                  return false;
+                }
+              }
+              return true;
+            });
+
+            // Remove the annotation if found
+            if (deletedAnnotationIndexByPoints !== -1) {
+              const updatedAnnotationsByPoints = [...annotations];
+              updatedAnnotationsByPoints.splice(deletedAnnotationIndexByPoints, 1);
+              setAnnotations(updatedAnnotationsByPoints);
+            }
+          }
+        }
+
         // Remove the annotation object
         canvas.remove(activeObject);
         canvas.renderAll();
       }
     }
   };
+
+  
   const clearAnnotations = () => {
     if (canvas) {
       canvas.getObjects().forEach(obj => {
@@ -405,6 +569,109 @@ const addLine = () => {
       }
     };
   }, [imageUrl]);
+
+
+
+  useEffect(() => {
+    const handleObjectModified = (e) => {
+      const updatedObject = e.target;
+      const annotationIndex = annotations.findIndex(annot => annot.object === updatedObject);
+    
+      if (annotationIndex !== -1) {
+        let updatedAnnotations = [...annotations];
+        let annotation = updatedAnnotations[annotationIndex];
+    
+        // Update coordinates based on annotation type
+        switch (annotation.type) {
+          case 'Line':
+            // Calculate the world coordinates of the line's start and end points
+            const x1World = updatedObject.x1 + updatedObject.left;
+            const y1World = updatedObject.y1 + updatedObject.top;
+            const x2World = updatedObject.x2 + updatedObject.left;
+            const y2World = updatedObject.y2 + updatedObject.top;
+            // Update the annotation coordinates
+            annotation.coordinates = [{ x: x1World, y: y1World }, { x: x2World, y: y2World }];
+            break;
+          case 'Ellipse':
+            // Ellipse's center is at (left + rx, top + ry)
+            annotation.coordinates = { cx: updatedObject.left + updatedObject.rx, cy: updatedObject.top + updatedObject.ry, rx: updatedObject.rx, ry: updatedObject.ry };
+            break;
+          case 'Polygon':
+          case 'Freehand':
+            // For polygons and freehand drawings, update the points based on the object's new position
+            annotation.points = updatedObject.points.map(pt => ({
+              x: pt.x + updatedObject.left,
+              y: pt.y + updatedObject.top,
+            }));
+            break;
+          // Add cases for other types as needed
+        }
+    
+        updatedAnnotations[annotationIndex] = annotation; // Replace the old annotation with the updated one
+        setAnnotations(updatedAnnotations); // Update the annotations state
+      }
+    };
+    
+  
+    if (canvas) {
+      canvas.on('object:modified', handleObjectModified);
+    }
+  
+    return () => {
+      if (canvas) {
+        canvas.off('object:modified', handleObjectModified);
+      }
+    };
+  }, [canvas, annotations]);
+  
+  // Adjusted formatCoordinatesForAnnotation function to handle coordinates for each annotation type
+
+  function formatCoordinatesForAnnotation(annot) {
+    let formattedCoordinates;
+    switch (annot.type) {
+      case 'Rect':
+        // For rectangles, store the top-left corner, width, and height
+        formattedCoordinates = {
+          x: annot.object.left,
+          y: annot.object.top,
+          width: annot.object.width * annot.object.scaleX,
+          height: annot.object.height * annot.object.scaleY
+        };
+        break;
+      case 'Line':
+        // Store the start and end points of the line
+        formattedCoordinates = [
+          { x: annot.coordinates[0].x, y: annot.coordinates[0].y },
+          { x: annot.coordinates[1].x, y: annot.coordinates[1].y }
+        ];
+        break;
+      case 'Ellipse':
+        // Store the center and radii of the ellipse
+        formattedCoordinates = {
+          cx: annot.coordinates.cx,
+          cy: annot.coordinates.cy,
+          rx: annot.coordinates.rx,
+          ry: annot.coordinates.ry
+        };
+        break;
+      case 'Polygon':
+      case 'Freehand':
+        // Store the points of the polygon or freehand drawing
+        formattedCoordinates = annot.points.map(pt => ({
+          x: pt.x,
+          y: pt.y,
+        }));
+        break;
+      default:
+        formattedCoordinates = [];
+    }
+    return formattedCoordinates;
+  }
+  
+
+
+
+
   
   useEffect(() => {
     if (canvas) {
@@ -495,7 +762,23 @@ const addLine = () => {
         >
           Zoom Out
         </button>
+        <button
+          onClick={handleResetZoom}
+          style={{
+          padding: '8px 8px',
+          margin: '8px 8px',
+          backgroundColor: '#6415FF', // Purple color
+          color: 'white',
+          border: 'none',
+          borderRadius: '4px',
+          cursor: 'pointer',
+          width: '150px', // Adjusted width
+          }}
+        >
+          Reset Zoom
+        </button>
       </div>
+      
         </div>
 
         <div style={{ flex: '1', display: 'flex', flexDirection: 'column', marginTop: '80px' }}>
@@ -529,7 +812,7 @@ const addLine = () => {
               Add Rectangle
             </button>
 
-            <button onClick={addPolygon}
+            {/* <button onClick={addPolygon}
             style={{
               padding: '8px 16px',
               margin: '8px 0',
@@ -542,7 +825,7 @@ const addLine = () => {
             }} // Adjusted width
               >
                 Add Polygon
-                </button>
+                </button> */}
                 <button onClick={enableFreehandDrawing}
                 style={{
                   padding: '8px 16px',
@@ -557,21 +840,6 @@ const addLine = () => {
             Freehand Draw
             </button>
 
-            <button
-              onClick={addEllipse}
-              style={{
-                padding: '8px 16px',
-                margin: '8px 0',
-                backgroundColor: '#6415FF', // Purple color
-                color: 'white',
-                border: 'none',
-                borderRadius: '4px',
-                cursor: 'pointer',
-                width: '150px', // Adjusted width
-              }}
-            >
-              Add Ellipse
-            </button>
             <button
               onClick={addLine}
               style={{
@@ -660,23 +928,58 @@ const addLine = () => {
         </div>
       </div>
 
-      <div style={{ position: 'absolute', right: '100px', top: '175px', zIndex: '1' }}>
-  {/* Annotations positioned on the right */}
+      <div style={{ position: 'absolute', right: '0px', top: '175px', width: '480px', maxHeight: '400px', overflowY: 'auto', border: '1px solid #ccc', padding: '10px', borderRadius: '5px', backgroundColor: '#f9f9f9', zIndex: '1' }}>
   {annotations.length > 0 ? (
-    <div>
-      <h3>Annotation Labels:</h3>
-      <ul>
+    <table style={{ width: '100%', borderCollapse: 'collapse' }}>
+      <thead>
+        <tr>
+          <th style={{ border: '1px solid #ccc', padding: '8px', backgroundColor: '#f2f2f2' }}>Patch ID</th>
+          <th style={{ border: '1px solid #ccc', padding: '8px', backgroundColor: '#f2f2f2' }}>Type</th>
+          <th style={{ border: '1px solid #ccc', padding: '8px', backgroundColor: '#f2f2f2' }}>Label</th>
+          <th style={{ border: '1px solid #ccc', padding: '8px', backgroundColor: '#f2f2f2' }}>Coordinates</th>
+        </tr>
+      </thead>
+      <tbody>
         {annotations.map((annotation, index) => (
-          <li key={index}>
-            Patch ID: {index}, Type: {annotation.type}, Label: {annotation.label}
-          </li>
+          <tr key={index}>
+            <td style={{ border: '1px solid #ccc', padding: '8px' }}>{index}</td>
+            <td style={{ border: '1px solid #ccc', padding: '8px' }}>{annotation.type}</td>
+            <td style={{ border: '1px solid #ccc', padding: '8px' }}>{annotation.label}</td>
+            <td style={{ border: '1px solid #ccc', padding: '8px' }}>
+              {/* Determine how to display coordinates based on the annotation type */}
+              {(() => {
+                switch (annotation.type) {
+                  case 'Polygon':
+                  case 'Freehand':
+                    return annotation.points.map(p => `(${p.x.toFixed(2)}, ${p.y.toFixed(2)})`).join(', ');
+                  case 'Rect':
+                    const coords = [
+                      { x: annotation.object.left, y: annotation.object.top },
+                      { x: annotation.object.left + annotation.object.width * annotation.object.scaleX, y: annotation.object.top },
+                      { x: annotation.object.left, y: annotation.object.top + annotation.object.height * annotation.object.scaleY },
+                      { x: annotation.object.left + annotation.object.width * annotation.object.scaleX, y: annotation.object.top + annotation.object.height * annotation.object.scaleY },
+                    ];
+                    return coords.map(coord => `(${coord.x.toFixed(2)}, ${coord.y.toFixed(2)})`).join(', ');
+                  case 'Line':
+                    return `(${annotation.coordinates[0].x.toFixed(2)}, ${annotation.coordinates[0].y.toFixed(2)}) to (${annotation.coordinates[1].x.toFixed(2)}, ${annotation.coordinates[1].y.toFixed(2)})`;
+                  case 'Ellipse':
+                    const { cx, cy, rx, ry } = annotation.coordinates;
+                    return `Center: (${cx.toFixed(2)}, ${cy.toFixed(2)}), RX: ${rx.toFixed(2)}, RY: ${ry.toFixed(2)}`;
+                  default:
+                    return 'N/A';
+                }
+              })()}
+            </td>
+          </tr>
         ))}
-      </ul>
-    </div>
+      </tbody>
+    </table>
   ) : (
     <p>No annotations added yet.</p>
   )}
 </div>
+
+
     </div>
   );
 };
