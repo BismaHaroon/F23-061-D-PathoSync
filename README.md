@@ -61,10 +61,18 @@ https://github.com/BismaHaroon/F23-061-D-PathoSync/assets/125141049/0e5538df-3ba
 
 ### Customizable Cell Detection Pipeline
 - **Upload Custom Datasets:** Easily upload custom datasets for tailored analysis and model training.
+https://github.com/BismaHaroon/F23-061-D-PathoSync/assets/125575282/da17f68d-1459-4616-a3a4-b25da79c50a8
+
 - **Build Custom Models:** Construct custom models to suit specific pathology requirements.
 - **Advanced Model Training Features:**  Utilize advanced model training features such as epochs, batch size, and learning rate for optimal results.
-- 
+https://github.com/BismaHaroon/F23-061-D-PathoSync/assets/125575282/3b3df5ca-3024-4ebb-8414-83cf6ab01a41
+
+### Cell Prediction
+- **Predict using saved models:** Once trained, select models for cell prediction, upload test images, and view results instantly.
+https://github.com/BismaHaroon/F23-061-D-PathoSync/assets/125575282/170c3978-da67-4b68-9c2f-7e699fe6e6ec
+
 ### Model Training
+
 ## Tissue Classification - ConVNet
 
 
