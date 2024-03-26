@@ -1,3 +1,5 @@
+
+https://github.com/BismaHaroon/F23-061-D-PathoSync/assets/125141049/7722f1ac-da53-4bb5-81e6-7912eaa94040
 # PathoSync: Enhancing Pathology with Synchronized AI
 
 <img width="900" alt="image" src="https://github.com/BismaHaroon/F23-061-D-PathoSync/assets/125575282/0dcd5060-a5c8-440e-b63e-7de91ac05283">
@@ -46,8 +48,9 @@ https://github.com/BismaHaroon/F23-061-D-PathoSync/assets/125141049/76ed5b81-80b
 
 ### Tissue Annotation
 
+https://github.com/BismaHaroon/F23-061-D-PathoSync/assets/125141049/d6472c2b-45da-4b83-a128-60e9c7362558
 
-https://github.com/BismaHaroon/F23-061-D-PathoSync/assets/125141049/97635ba2-e7d5-4527-8c12-69ff0718c23d
+
 
 
 - Annotations in the form of rectangles, lines, and freehand drawings.
