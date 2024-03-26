@@ -94,20 +94,24 @@ https://github.com/BismaHaroon/F23-061-D-PathoSync/assets/125141049/f6e95136-a88
 https://github.com/BismaHaroon/F23-061-D-PathoSync/assets/125141049/70d796fa-1fc5-4800-b068-7f0a0b64b5cd
 
 
-## Customizable Tissue Classification Pipeline- ConVNet
+## Customizable Tissue Classification Pipeline
+-**Custom Classes Creation:** Users can create custom classes tailored to the unique characteristics of their datasets, ensuring precise classification.
 
+-**Custom Dataset Integration:** PathoSync allows the seamless upload of images from custom datasets, facilitating personalized model training and analysis.
 
+-**Custom Model Building:** Users have the flexibility to build custom models suited to their specific requirements, enabling advanced classification tasks.
+
+-**Advanced Model Training Features:** PathoSync provides the capability to input advanced model training features such as epochs, batch size, and learning rate, enabling users to fine-tune their models for optimal performance and desired results.
+**ConVNet**
 https://github.com/BismaHaroon/F23-061-D-PathoSync/assets/125141049/40797cd5-6a52-4784-a76f-686bad20febe
 
-## Tissue Classification - ResNet
-
-
+**ResNet**
 https://github.com/BismaHaroon/F23-061-D-PathoSync/assets/125141049/9c189e33-622d-4f03-9cb0-b16c1c147320
 
-
-Cell Prediction
-Once trained, select models for cell prediction, upload test images, and view results instantly.
-
+## Tissue Classification
+- Once the model is trained, it is saved and can be conveniently selected for prediction tasks.
+- Users can upload test images, and the results are promptly displayed for analysis.
+- Users have the option to choose from pre-trained DenseNet, ResNet, and AlexNet models trained on the Kather100k dataset, further expanding the versatility of the classification process.
 
 ## Table of Contents
 
