@@ -45,7 +45,6 @@ app = Flask(__name__)
 CORS(app)
 cache = Cache(app)
 
-
 # Database Configuration
 app.config["MONGO_URI"] = "mongodb://localhost:27017/PathoSync"
 mongo = PyMongo(app)
@@ -781,8 +780,5 @@ def save_annotated_image():
     except Exception as e:
         print(f"An error occurred: {e}")
         return jsonify({'error': str(e)}), 500
-
-
-
 if __name__ == '__main__':
     app.run(debug=True)
