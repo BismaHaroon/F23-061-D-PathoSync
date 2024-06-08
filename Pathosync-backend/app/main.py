@@ -48,7 +48,6 @@ cache = Cache(app)
 # Database Configuration
 app.config["MONGO_URI"] = "mongodb://localhost:27017/PathoSync"
 mongo = PyMongo(app)
-
 UPLOAD_FOLDER = 'uploads'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
