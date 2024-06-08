@@ -755,8 +755,6 @@ def save_annotated_image():
             annotated_tissue_images_collection = mongo.db.Annotated_Tissue_Images
             annotated_tissue_images_collection.insert_one({'imageID': image_id, 'imagePath': image_save_path})
 
-        
-
 
         # Process and save annotations data to MongoDB
         tissue_annotations_collection = mongo.db.Tissue_Annotations  # Accessing the collection
@@ -764,8 +762,6 @@ def save_annotated_image():
             # Insert each annotation into the MongoDB collection
             tissue_annotations_collection.insert_one(annot)
             print(f"Annotation inserted into MongoDB: {annot}")
-
-
         # Insert annotations data into MongoDB
         if annotations:
             db = mongo.db
@@ -773,8 +769,6 @@ def save_annotated_image():
             for annot in annotations:
                 annot['imagePath'] = image_save_path  # Include the path of the saved image
                 tissue_annotations.insert_one(annot)  # Insert the annotation into the collection
-
-
         return jsonify({'message': 'Image and annotations saved successfully'})
     except Exception as e:
         print(f"An error occurred: {e}")
