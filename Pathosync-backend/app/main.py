@@ -308,8 +308,7 @@ def denoise_and_normalize(image_path, alpha=1.0, beta=0.15, contrast_alpha=1.5, 
     cv2.imwrite(normalized_filename, cv2.cvtColor(normalized_image, cv2.COLOR_RGB2BGR))
 
     return normalized_filename
-
-
+    
 def readImageAndGetClicks(image_file, cx, cy):
     """
     Read image from a file and get clicks.
