@@ -1,3 +1,4 @@
+import cv2
 import numpy as np
 from skimage.io import imsave
 import matplotlib.pyplot as plt
@@ -7,7 +8,6 @@ import base64
 import logging
 from skimage.color import label2rgb
 from skimage import img_as_ubyte 
-import cv2
 from PIL import Image
 from datetime import datetime
 import os
