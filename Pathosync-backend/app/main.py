@@ -1,3 +1,4 @@
+import cv2
 import numpy as np
 from skimage.io import imsave
 import matplotlib.pyplot as plt
@@ -6,8 +7,7 @@ import torch
 import base64
 import logging
 from skimage.color import label2rgb
-from skimage import img_as_ubyte 
-import cv2
+from skimage import img_as_ubyte
 from PIL import Image
 from datetime import datetime
 import os
@@ -45,12 +45,11 @@ app = Flask(__name__)
 CORS(app)
 cache = Cache(app)
 
-# Database Configuration
+#Database Configuration
 app.config["MONGO_URI"] = "mongodb://localhost:27017/PathoSync"
 mongo = PyMongo(app)
 UPLOAD_FOLDER = 'uploads'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
-
 
 def latest_processed():
     processed_images = []
@@ -308,8 +307,7 @@ def denoise_and_normalize(image_path, alpha=1.0, beta=0.15, contrast_alpha=1.5, 
     cv2.imwrite(normalized_filename, cv2.cvtColor(normalized_image, cv2.COLOR_RGB2BGR))
 
     return normalized_filename
-
-
+    
 def readImageAndGetClicks(image_file, cx, cy):
     """
     Read image from a file and get clicks.
