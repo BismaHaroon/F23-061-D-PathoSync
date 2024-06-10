@@ -4,6 +4,7 @@ import styled from "styled-components";
 import Header from "components/headers/light";
 import Footer from "components/footers/FiveColumnWithBackground";
 import "./TrainTissueStyles.css"; // Import CSS file
+<<<<<<< HEAD
 import LoadingDialog from "components/Loading/LoadingDialog"; // Make sure this path is correct
 import SuccessDialog from "components/Loading/SuccessDialogTissue"; // Make sure this path is correct
 import ErrorDialog from "components/Loading/ErrorDialog";
@@ -34,11 +35,17 @@ const BinIcon = styled.svg`
   fill: black;
   height: 1em;
 `;
+=======
+
+
+
+>>>>>>> 8655ceccc37e8fd8d0bdcbd17d190dc036418d41
 const PageContainer = styled.div`
   ${tw`my-8 mx-auto max-w-4xl`}
 `;
 
 const FileInputContainer = styled.div`
+<<<<<<< HEAD
   background-color: #ffffff;
   padding: 20px;
   margin-bottom: 20px;
@@ -50,6 +57,19 @@ const FileInputContainer = styled.div`
   max-height: 300px;
   overflow: auto;
 `;
+=======
+    background-color: #ffff;
+    padding-top: 20px;
+    padding-left:20px;
+    padding-right:20px;
+    padding-bottom:10px;
+    margin-bottom: 20px;
+    
+  ${tw`border border-gray-300 rounded-lg`}
+`;
+
+
+>>>>>>> 8655ceccc37e8fd8d0bdcbd17d190dc036418d41
 const ModelSelect = styled.select`
   ${tw`w-full p-3 border border-gray-300 rounded-lg text-gray-600 mb-1`}
 `;
@@ -58,6 +78,7 @@ const UploadForm = styled.form`
   ${tw`mt-4`}
 `;
 
+<<<<<<< HEAD
 
 // const FileInputWrapper = styled.div`
 //   flex: 1; /* Let the input take up remaining space */
@@ -66,10 +87,13 @@ const UploadForm = styled.form`
 const ButtonContainer1 = styled.div`
   ${tw`flex justify-center items-center`}
 `;
+=======
+>>>>>>> 8655ceccc37e8fd8d0bdcbd17d190dc036418d41
 const ClassInput = styled.input`
   ${tw`w-full p-3 border border-gray-300 rounded-lg text-gray-600 mb-1`}
 `;
 
+<<<<<<< HEAD
 const ImageInputButton = styled.label`
   ${tw`p-2 border border-gray-300 rounded-lg text-gray-600 cursor-pointer`}
   margin: 20px 10px; /* Adjust margin for spacing */
@@ -80,20 +104,30 @@ const ImageInputButton = styled.label`
   &:hover {
     background-color: #e0e0e0;
   }
+=======
+const ImageInput = styled.input`
+  ${tw`w-full p-3 border border-gray-300 rounded-lg text-gray-600 mb-4`}
+>>>>>>> 8655ceccc37e8fd8d0bdcbd17d190dc036418d41
 `;
 
 const FormContainer = styled.div`
   ${tw`p-6 mt-6 rounded-lg shadow-lg`}
+<<<<<<< HEAD
   background-color: #e6e6fa; /* Light purple background */
   border: 1px solid #ccc; /* Gray border */
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.6); /* Shadow */
   `; 
+=======
+  background-color: #e6e6fa ;
+`;
+>>>>>>> 8655ceccc37e8fd8d0bdcbd17d190dc036418d41
 
 const FormTitle = styled.h3`
   ${tw`text-lg font-semibold text-gray-800 mb-2 mt-3`}
   text-align: left;
 `;
 
+<<<<<<< HEAD
 const FormTitle2 = styled.h4`
   ${tw`text-lg font-semibold text-gray-700 mb-1 mt-3`}
   text-align: left;
@@ -105,6 +139,10 @@ const FormSection = styled.div`
   border: 1px solid #ddd; /* Light gray border */
   padding: 20px; /* Add padding to the section */
   border-radius: 8px; /* Add border radius */
+=======
+const FormSection = styled.div`
+  ${tw`mb-4 `}
+>>>>>>> 8655ceccc37e8fd8d0bdcbd17d190dc036418d41
 `;
 
 const ButtonContainer = styled.div`
@@ -112,6 +150,7 @@ const ButtonContainer = styled.div`
 `;
 
 const SubmitButton = styled.button`
+<<<<<<< HEAD
   width: 200px;
   height: 40px;
   border-radius: 30px;
@@ -158,6 +197,22 @@ transition: transform 0.3s ease;
 &:hover {
   transform: scale(0.97);
 }
+=======
+background-color: #37097d ;
+  ${tw` text-white font-bold py-2 px-4 rounded`}
+  &:hover {
+    background-color:#9400d3 ;
+  }
+`;
+
+const AddClassButton = styled.button`
+background-color: #37097d ;
+  ${tw` text-white font-bold py-2 px-4 rounded`}
+  margin-right: 10px; /* Add margin between Add Class and Upload & Submit */
+  &:hover {
+    background-color:#9400d3 ;
+  }
+>>>>>>> 8655ceccc37e8fd8d0bdcbd17d190dc036418d41
 `;
 
 const TrainButton = styled.button`
@@ -184,6 +239,7 @@ const CsvInput = styled.input`
   ${tw`w-full p-3 border border-gray-300 rounded-lg text-gray-600 mb-4`}
 `;
 
+<<<<<<< HEAD
 const ModelOptionsContainer = styled.div`
   display: flex;
   justify-content: space-around; /* Adjust as needed */
@@ -285,6 +341,9 @@ const ImagePreviewContainer = styled.div`
   grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
   grid-gap: 10px;
 `;
+=======
+
+>>>>>>> 8655ceccc37e8fd8d0bdcbd17d190dc036418d41
 const TrainTissue = () => {
   const [selectedModel, setSelectedModel] = useState(""); 
   const [showCustomClasses, setShowCustomClasses] = useState(false); 
@@ -295,6 +354,7 @@ const TrainTissue = () => {
   const [learningRate, setLearningRate] = useState(0.0001); // State to store the learning rate
   const [batchSize, setBatchSize] = useState(16); // State to store the batch size
   const [showDatasetFields, setShowDatasetFields] = useState(false);
+<<<<<<< HEAD
   const [isLoading, setIsLoading] = useState(false); // State for showing loading dialog
   const [isSuccess, setIsSuccess] = useState(false); // State for showing success dialog
   const [isError, setIsError] = useState(false); // State for showing error dialog
@@ -305,6 +365,9 @@ const TrainTissue = () => {
   const [Loss, setLoss] = useState(null); 
 
 
+=======
+  
+>>>>>>> 8655ceccc37e8fd8d0bdcbd17d190dc036418d41
 
   const [csvFiles, setCsvFiles] = useState([]);
 
@@ -316,6 +379,7 @@ const TrainTissue = () => {
   };
 
 // Function to handle model selection
+<<<<<<< HEAD
 const handleModelSelect = (model) => {
   setSelectedModel(model);
   setShowCustomClasses(true); // Show the custom classes form when CNN is selected
@@ -414,6 +478,33 @@ const handleRemoveImage = (classIndex, indexToRemove) => {
   });
 };
 
+=======
+const handleModelSelect = (e) => {
+  const model = e.target.value;
+  setSelectedModel(model);
+  
+  if (model === "cnn") {
+    setShowCustomClasses(true); // Show the custom classes form when CNN is selected
+    setShowDatasetFields(false); // Hide the dataset fields when CNN is selected
+  } else {
+    setShowCustomClasses(false); // Hide the custom classes form when ResNet is selected
+    setShowDatasetFields(true); // Show the dataset fields when ResNet is selected
+  }
+};
+
+
+  
+
+  // Function to handle uploading images for custom classes
+  const handleImageUpload = (classIndex, files) => {
+    const updatedClasses = [...classes];
+    updatedClasses[classIndex] = {
+      ...updatedClasses[classIndex],
+      images: files,
+    };
+    setClasses(updatedClasses);
+  };
+>>>>>>> 8655ceccc37e8fd8d0bdcbd17d190dc036418d41
 
   // Function to handle form submission
   const handleSubmit = async (e) => {
@@ -450,6 +541,7 @@ const handleRemoveImage = (classIndex, indexToRemove) => {
 
   // Function to add a new class
   const addClass = () => {
+<<<<<<< HEAD
     if (selectedModel === "densenet" && classes.length >= 2) {
       alert("You can only add up to 2 classes for DenseNet model");
       return;
@@ -458,6 +550,11 @@ const handleRemoveImage = (classIndex, indexToRemove) => {
   };
 
 
+=======
+    setClasses([...classes, { name: "", images: [] }]);
+  };
+
+>>>>>>> 8655ceccc37e8fd8d0bdcbd17d190dc036418d41
   // Function to handle input change for class name
   const handleClassNameChange= (e, classIndex) => {
     const updatedClasses = [...classes];
@@ -503,6 +600,7 @@ const handleRemoveImage = (classIndex, indexToRemove) => {
 
   const handleTrain = async (e) => {
     e.preventDefault();
+<<<<<<< HEAD
     setIsLoading(true);
     let trainEndpoint = " ";
 
@@ -606,6 +704,89 @@ const handleRemoveImage = (classIndex, indexToRemove) => {
         <ResnetModelOption onClick={() => handleModelSelect("resnet")} />
         <DenseNetModelOption onClick={() => handleModelSelect("densenet")} />
         </ModelOptionsContainer>
+=======
+  
+    try {
+      const response = await fetch("http://127.0.0.1:5000/train_tissue_cnn", {
+        method: "POST",
+      });
+  
+      if (response.ok) {
+        console.log("Model training started successfully");
+        // Optionally, you can handle success actions here
+      } else {
+        console.error("Failed to start model training");
+        // Optionally, you can handle failure actions here
+      }
+    } catch (error) {
+      console.error("Error starting model training:", error);
+      // Optionally, you can handle error actions here
+    }
+  };
+
+// RESNET 
+// Function to handle form submission for ResNet
+const handleResNetSubmit = async (e) => {
+  e.preventDefault();
+
+  // Here you can perform any client-side validation or other necessary actions
+
+  // For now, let's just log the dataset name and CSV files (if uploaded)
+  console.log("Dataset Name:", datasetName);
+  console.log("CSV Files:", csvFiles);
+
+  // Toggle the state to show advanced options
+  setShowAdvancedOptions(true);
+};
+
+
+
+  return (
+    <>
+    <Header></Header>
+      <PageContainer>
+        <h1 className="title">Tissue Classification</h1>
+        <FormContainer>
+        <h2 className="subtitle">Model Architecture</h2>
+          <ModelSelect value={selectedModel} onChange={handleModelSelect}>
+            <option value="">Select Model Architecture</option>
+            <option value="resnet">ResNet</option>
+            <option value="cnn">CNN</option>
+          </ModelSelect>
+
+          {/* New section for handling dataset information */}
+  {showDatasetFields && (
+    <FormSection>
+      <FormTitle>Dataset Information</FormTitle>
+      <ClassInput
+        type="text"
+        placeholder="Enter Dataset Name"
+        value={datasetName}
+        onChange={handleDatasetNameChange}
+      />
+      <FileInputContainer>
+        <FormTitle>Upload Image Files</FormTitle>
+        <ImageInput
+          type="file"
+          multiple
+          onChange={(e) => handleImageUpload(e.target.files)}
+        />
+      </FileInputContainer>
+      <FileInputContainer>
+        <FormTitle>Upload CSV File</FormTitle>
+        <CsvInput
+          type="file"
+          multiple  // Allow multiple files to be uploaded
+          onChange={(e) => handleCsvUpload(e.target.files)}
+        />
+      </FileInputContainer>
+      <ButtonContainer>
+      <SubmitButton type="submit" onClick={handleResNetSubmit}>Upload & Submit</SubmitButton>
+    </ButtonContainer>
+    </FormSection>
+  )}
+
+>>>>>>> 8655ceccc37e8fd8d0bdcbd17d190dc036418d41
 
           {showCustomClasses && (
             <FormSection>
@@ -617,6 +798,7 @@ const handleRemoveImage = (classIndex, indexToRemove) => {
                   value={datasetName}
                   onChange={handleDatasetNameChange}
                 />
+<<<<<<< HEAD
 {classes.map((classData, i) => (
   <div key={i}>
     <FormSection>
@@ -687,6 +869,31 @@ const handleRemoveImage = (classIndex, indexToRemove) => {
               <SubmitButton type="submit">Upload & Submit <ArrowIcon viewBox="0 0 448 512" height="1em">
         <path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"></path>
       </ArrowIcon> </SubmitButton>
+=======
+                {classes.map((classData, i) => (
+                  <div key={i}>
+                    <FormSection>
+                      <FormTitle>Class Data</FormTitle>
+                      <ClassInput
+                        type="text"
+                        placeholder="Enter Class Name"
+                        value={classData.name}
+                        onChange={(e) => handleClassNameChange(e, i)}
+                      />
+                    </FormSection>
+                    <FileInputContainer> {/* Add a container for the file input */}
+                    <ImageInput
+                      type="file"
+                      multiple
+                      onChange={(e) => handleImageUpload(i, e.target.files)}
+                    />
+                  </FileInputContainer>
+                  </div>
+                ))}
+                <ButtonContainer>
+              <AddClassButton onClick={addClass}>Add Class</AddClassButton>
+              <SubmitButton type="submit">Upload & Submit</SubmitButton>
+>>>>>>> 8655ceccc37e8fd8d0bdcbd17d190dc036418d41
               </ButtonContainer>
               </UploadForm>
               
@@ -696,6 +903,7 @@ const handleRemoveImage = (classIndex, indexToRemove) => {
             <FormSection>
               <FormTitle>Advanced Options</FormTitle>
               <form onSubmit={handleAdvancedOptionsSubmit}>
+<<<<<<< HEAD
                 <FormTitle2>Epochs</FormTitle2>
                 <EpochSelect value={epochs} onChange={handleEpochsChange}>
                   {[1,3,5, 6, 7, 8, 9, 10].map((epoch) => (
@@ -703,6 +911,13 @@ const handleRemoveImage = (classIndex, indexToRemove) => {
                   ))}
                 </EpochSelect>
                 <FormTitle2>Learning Rate</FormTitle2>
+=======
+                <EpochSelect value={epochs} onChange={handleEpochsChange}>
+                  {[5, 6, 7, 8, 9, 10].map((epoch) => (
+                    <option key={epoch} value={epoch}>{epoch}</option>
+                  ))}
+                </EpochSelect>
+>>>>>>> 8655ceccc37e8fd8d0bdcbd17d190dc036418d41
                 <LearningRateInput
                   type="number"
                   step="0.0001"
@@ -710,7 +925,10 @@ const handleRemoveImage = (classIndex, indexToRemove) => {
                   value={learningRate}
                   onChange={handleLearningRateChange}
                 />
+<<<<<<< HEAD
                 <FormTitle2>Batch Size</FormTitle2>
+=======
+>>>>>>> 8655ceccc37e8fd8d0bdcbd17d190dc036418d41
                 <BatchSizeInput
                   type="number"
                   placeholder="Batch Size"
@@ -723,6 +941,7 @@ const handleRemoveImage = (classIndex, indexToRemove) => {
           )}
         </FormContainer>
       </PageContainer>
+<<<<<<< HEAD
       {isLoading && <LoadingDialog message="Model training in progress..." />}
       {isSuccess && (
         <SuccessDialog
@@ -735,8 +954,15 @@ const handleRemoveImage = (classIndex, indexToRemove) => {
       )}
             {isError && <ErrorDialog message={errorMessage} onClose={() => setIsError(false)} />}
       
+=======
+      <Footer></Footer>
+>>>>>>> 8655ceccc37e8fd8d0bdcbd17d190dc036418d41
     </>
   );
 };
 
+<<<<<<< HEAD
 export default TrainTissue;
+=======
+export default TrainTissue;
+>>>>>>> 8655ceccc37e8fd8d0bdcbd17d190dc036418d41

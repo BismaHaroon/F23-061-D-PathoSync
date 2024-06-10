@@ -44,7 +44,11 @@ const Card = styled.div`
   }
 
   .title {
+<<<<<<< HEAD
     ${tw`mt-4 tracking-wide font-bold text-2xl leading-none cursor-pointer`}
+=======
+    ${tw`mt-4 tracking-wide font-bold text-2xl leading-none`}
+>>>>>>> 8655ceccc37e8fd8d0bdcbd17d190dc036418d41
   }
 
   .description {

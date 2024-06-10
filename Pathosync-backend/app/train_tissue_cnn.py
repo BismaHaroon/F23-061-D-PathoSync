@@ -1,4 +1,5 @@
 import os
+<<<<<<< HEAD
 from tensorflow.keras import layers
 from tensorflow.keras import Model
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
@@ -37,6 +38,24 @@ class EpochInfoCallback(Callback):
         sys.stdout.flush()
         print(f"  - Validation Loss: {logs['val_loss']}, Accuracy: {logs['val_acc']}")
         sys.stdout.flush()
+=======
+
+from tensorflow.keras import layers
+from tensorflow.keras import Model
+
+from tensorflow.keras.preprocessing.image import ImageDataGenerator
+from tensorflow.keras.applications.inception_v3 import InceptionV3
+from tensorflow.keras.applications.densenet import DenseNet201
+from tensorflow.keras.callbacks import ModelCheckpoint
+
+from tensorflow.keras.optimizers import RMSprop,Adam
+
+from sklearn.model_selection import train_test_split
+import random
+# preprocessing
+import shutil
+import sys
+>>>>>>> 8655ceccc37e8fd8d0bdcbd17d190dc036418d41
 
 # Define the function to flush standard output
 def flush_stdout():
@@ -48,7 +67,10 @@ def extract_class_name(file_name):
 
 print("Script started executing...")
 flush_stdout()
+<<<<<<< HEAD
 
+=======
+>>>>>>> 8655ceccc37e8fd8d0bdcbd17d190dc036418d41
 # Get the absolute path to the directory where this script resides
 script_dir = os.path.dirname(os.path.abspath(__file__))
 
@@ -59,6 +81,10 @@ uploads_folder = os.path.join(script_dir, 'uploads')
 if not os.path.exists(uploads_folder):
     print("Error: 'uploads' directory not found")
     flush_stdout()
+<<<<<<< HEAD
+=======
+    # Handle the error gracefully, e.g., by exiting the script or raising an exception
+>>>>>>> 8655ceccc37e8fd8d0bdcbd17d190dc036418d41
 else:
     print("Uploads folder found successfully.")
     flush_stdout()
@@ -76,6 +102,10 @@ try:
 except ValueError:
     print("Error: No directories found in 'uploads' folder")
     flush_stdout()
+<<<<<<< HEAD
+=======
+    # Handle the error gracefully, e.g., by exiting the script or raising an exception
+>>>>>>> 8655ceccc37e8fd8d0bdcbd17d190dc036418d41
 except Exception as e:
     print(f"Error: {e}")
     flush_stdout()
@@ -86,19 +116,29 @@ dataset_path = os.path.join(script_dir, dataset_folder)
 os.makedirs(dataset_path, exist_ok=True)
 print(f"Created joint dataset folder: {dataset_path}")
 flush_stdout()
+<<<<<<< HEAD
 
+=======
+>>>>>>> 8655ceccc37e8fd8d0bdcbd17d190dc036418d41
 # Traverse all subdirectories within the obtained directory
 for root, dirs, files in os.walk(os.path.join(uploads_folder, most_recent_dir)):
     for file in files:
         file_path = os.path.join(root, file)
         # Copy the file to the joint dataset folder
         shutil.copy(file_path, dataset_path)
+<<<<<<< HEAD
+=======
+        # print(f"Saved file '{file}' in joint dataset folder")
+>>>>>>> 8655ceccc37e8fd8d0bdcbd17d190dc036418d41
 
 print("Preprocessing completed.","\n")
 flush_stdout()
 print('Proceeding to Train/Test Split', '\n')
 flush_stdout()
+<<<<<<< HEAD
 
+=======
+>>>>>>> 8655ceccc37e8fd8d0bdcbd17d190dc036418d41
 # Remove existing train and test directories if they exist
 train_dir = os.path.join(dataset_path, 'train')
 test_dir = os.path.join(dataset_path, 'test')
@@ -108,6 +148,10 @@ if os.path.exists(train_dir):
 if os.path.exists(test_dir):
     shutil.rmtree(test_dir)
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 8655ceccc37e8fd8d0bdcbd17d190dc036418d41
 # Lists to store file paths for train and test sets
 train_files = []
 test_files = []
@@ -137,6 +181,10 @@ for file_path in train_files:
     os.makedirs(class_dir, exist_ok=True)
     shutil.copy(file_path, class_dir)
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 8655ceccc37e8fd8d0bdcbd17d190dc036418d41
 for file_path in test_files:
     class_name = extract_class_name(os.path.basename(file_path))
     class_dir = os.path.join(test_dir, class_name)
@@ -145,12 +193,16 @@ for file_path in test_files:
 
 print("Train/Test split completed successfully.")
 flush_stdout()
+<<<<<<< HEAD
 
+=======
+>>>>>>> 8655ceccc37e8fd8d0bdcbd17d190dc036418d41
 pre_trained_model_2 = DenseNet201(
     weights='imagenet',
     include_top=False,
     input_shape=(224, 224, 3))
 
+<<<<<<< HEAD
 x = layers.GlobalAveragePooling2D()(pre_trained_model_2.output)
 x = layers.Dropout(0.2)(x)
 x = layers.BatchNormalization()(x)
@@ -185,11 +237,27 @@ print("Contents folder path:", contents_folder)
 model_path = os.path.join("trained_models_tissue", f"{dataset_name}_ConVNet.h5")
 
 checkpoint = ModelCheckpoint(model_path, monitor='val_acc', verbose=1, save_best_only=True, mode='max')
+=======
+# pre_trained_model_2.summary()
+
+print(f"<><><><> Train Dir: '{train_dir}'<><><><>")
+flush_stdout()
+print(f"<><><><> Test Dir: '{test_dir}'<><><><>")
+flush_stdout()
+
+x = layers.GlobalAveragePooling2D()(pre_trained_model_2.output)
+x = layers.Dropout(0.2)(x)
+x = layers.BatchNormalization()(x)
+x = layers.Dense  (1, activation='sigmoid')(x)
+
+model = Model( pre_trained_model_2.input, x) 
+>>>>>>> 8655ceccc37e8fd8d0bdcbd17d190dc036418d41
 
 model.compile(optimizer=Adam(learning_rate=0.0001), 
               loss='binary_crossentropy', 
               metrics=['acc'])
 
+<<<<<<< HEAD
 history = model.fit(
             train_generator,
             validation_data=validation_generator,
@@ -210,3 +278,133 @@ flush_stdout()
 model.save(model_path)
 print("Model training completed successfully.")
 flush_stdout()
+=======
+
+
+
+train_datagen = ImageDataGenerator(rescale = 1./255.,
+                                   rotation_range = 40,
+                                   width_shift_range = 0.2,
+                                   height_shift_range = 0.2,
+                                   shear_range = 0.2,
+                                   zoom_range = 0.2,
+                                   horizontal_flip = True)
+
+# Note that the validation data should not be augmented!
+test_datagen = ImageDataGenerator( rescale = 1.0/255. )
+
+
+# Flow training images in batches of 20 using train_datagen generator
+train_generator = train_datagen.flow_from_directory(train_dir,
+                                                    batch_size = 10,
+                                                    class_mode = 'binary',
+                                                    target_size = (224, 224))
+
+# Flow validation images in batches of 20 using test_datagen generator
+validation_generator =  test_datagen.flow_from_directory( test_dir,
+                                                          batch_size  = 10,
+                                                          class_mode  = 'binary',
+                                                          target_size = (224, 224))
+
+contents_folder = os.path.join(dataset_path, "contents")
+os.makedirs(contents_folder, exist_ok=True)
+print("Contents folder path:", contents_folder)
+
+
+# filepath="/content/weights_best.hdf5"
+# checkpoint = ModelCheckpoint(filepath, monitor='val_acc', verbose=1, save_best_only=True, mode='max')
+
+# Define the file path for saving the weights
+weights_filepath = os.path.join(contents_folder, "weights_best.hdf5")
+
+# Define the ModelCheckpoint callback
+checkpoint = ModelCheckpoint(weights_filepath, monitor='val_acc', verbose=1, save_best_only=True, mode='max')
+
+# Define a callback to print the path where the checkpoint is saved
+def print_checkpoint(filepath):
+    print("Checkpoint saved at:", filepath)
+
+checkpoint.on_train_end = print_checkpoint
+
+
+print("Number of samples in the training generator:", train_generator.samples)
+print("Number of samples in the validation generator:", validation_generator.samples)
+
+
+try:
+    history = model.fit(
+        train_generator,
+        validation_data=validation_generator,
+        steps_per_epoch=train_generator.samples // train_generator.batch_size,
+        epochs=10,
+        validation_steps=validation_generator.samples // validation_generator.batch_size,
+        verbose=1,
+        callbacks=[checkpoint]
+    )
+except Exception as e:
+    print("Error occurred during training:", e)
+
+
+# ############# THIS IS WHERE ERROR OCCURS #########################
+# history = model.fit(
+#             train_generator,
+#             validation_data=validation_generator,
+#             steps_per_epoch=train_generator.samples // train_generator.batch_size,
+#             epochs=10,
+#             validation_steps=validation_generator.samples // validation_generator.batch_size,
+#             verbose=1,
+#             callbacks=[checkpoint]
+#             )
+
+# ####################################################################
+
+
+# from tensorflow.keras.callbacks import ModelCheckpoint, Callback
+
+# # Define a custom callback to print epoch information
+# class EpochInfoCallback(Callback):
+#     def on_epoch_end(self, epoch, logs=None):
+#         print(f"Epoch {epoch + 1}/{self.params['epochs']}:")
+#         sys.stdout.flush()
+#         print(f"  - Training Loss: {logs['loss']}, Accuracy: {logs['acc']}")
+#         sys.stdout.flush()
+#         print(f"  - Validation Loss: {logs['val_loss']}, Accuracy: {logs['val_acc']}")
+#         sys.stdout.flush()
+
+# # Create a ModelCheckpoint callback to save the best model
+# checkpoint = ModelCheckpoint(filepath, monitor='val_acc', verbose=1, save_best_only=True, mode='max')
+
+# # Define and compile the model
+# model.compile(optimizer=Adam(learning_rate=0.0001), 
+#               loss='binary_crossentropy', 
+#               metrics=['acc'])
+
+# # Train the model with the custom callback
+# history = model.fit(
+#             train_generator,
+#             validation_data=validation_generator,
+#             steps_per_epoch=train_generator.samples // train_generator.batch_size,
+#             epochs=10,
+#             validation_steps=validation_generator.samples // validation_generator.batch_size,
+#             verbose=1,
+#             callbacks=[checkpoint, EpochInfoCallback()])
+
+
+import matplotlib.pyplot as plt
+acc = history.history['acc']
+val_acc = history.history['val_acc']
+loss = history.history['loss']
+val_loss = history.history['val_loss']
+
+epochs = range(len(acc))
+
+plt.plot(epochs, acc, 'r', label='Training accuracy')
+plt.plot(epochs, val_acc, 'b', label='Validation accuracy')
+plt.title('Training and validation accuracy')
+plt.legend(loc=0)
+plt.figure()
+
+
+plt.show()
+     
+>>>>>>> 8655ceccc37e8fd8d0bdcbd17d190dc036418d41

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+<<<<<<< HEAD
 import tw from "twin.macro";
 import styled from "styled-components";
 
@@ -249,10 +250,14 @@ const BatchSizeInput = styled.input`
 
 
 
+=======
+import "./TrainCellStyles.css";
+>>>>>>> 8655ceccc37e8fd8d0bdcbd17d190dc036418d41
 
 const TrainCell = () => {
   const [selectedModel, setSelectedModel] = useState(""); 
   const [showCustomClasses, setShowCustomClasses] = useState(false); 
+<<<<<<< HEAD
   const [images, setImages] = useState([]); 
   const [masks, setMasks] = useState([]); 
   const [datasetName, setDatasetName] = useState(""); 
@@ -341,6 +346,32 @@ const handleMaskUpload = (e) => {
   const previews = uploadedFiles.map((file) => URL.createObjectURL(file));
   setImagePreviewsMask((prevPreviews) => [...prevPreviews, ...previews]);
 };
+=======
+  const [images, setImages] = useState([]); // State to store uploaded image files
+  const [masks, setMasks] = useState([]); // State to store uploaded mask files
+  const [datasetName, setDatasetName] = useState(""); // State to store the dataset name
+  const [showAdvancedOptions, setShowAdvancedOptions] = useState(false); // State to toggle showing advanced options
+  const [epochs, setEpochs] = useState(10); // State to store the number of epochs
+  const [learningRate, setLearningRate] = useState(0.0001); // State to store the learning rate
+  const [batchSize, setBatchSize] = useState(16); // State to store the batch size
+
+  // Function to handle model selection
+  const handleModelSelect = (e) => {
+    const model = e.target.value;
+    setSelectedModel(model);
+    setShowCustomClasses(model === "resnet"); 
+  };
+
+  // Function to handle uploading images
+  const handleImageUpload = (e) => {
+    setImages(e.target.files);
+  };
+
+  // Function to handle uploading masks
+  const handleMaskUpload = (e) => {
+    setMasks(e.target.files);
+  };
+>>>>>>> 8655ceccc37e8fd8d0bdcbd17d190dc036418d41
 
 // Function to handle form submission
 const handleSubmit = async (e) => {
@@ -381,6 +412,7 @@ const handleSubmit = async (e) => {
     setDatasetName(e.target.value);
   };
 
+<<<<<<< HEAD
 
   // Function to handle input change for number of epochs
   const handleEpochsChange = (e) => {
@@ -388,6 +420,11 @@ const handleSubmit = async (e) => {
     if (!isNaN(value)) {
       setEpochs(value); // Set epochs only if it's a valid integer
     }
+=======
+  // Function to handle input change for number of epochs
+  const handleEpochsChange = (e) => {
+    setEpochs(parseInt(e.target.value));
+>>>>>>> 8655ceccc37e8fd8d0bdcbd17d190dc036418d41
   };
 
   // Function to handle input change for learning rate
@@ -399,6 +436,7 @@ const handleSubmit = async (e) => {
   const handleBatchSizeChange = (e) => {
     setBatchSize(parseInt(e.target.value));
   };
+<<<<<<< HEAD
   const pollTrainingStatus = () => {
     const interval = setInterval(async () => {
       try {
@@ -539,11 +577,63 @@ const StarDistModelOption = ({ onClick }) => {
               <FormTitle>Dataset Details</FormTitle>
               <form onSubmit={handleSubmit}>
                 <ClassInput
+=======
+
+  // Function to handle advanced options form submission (training)
+  // Function to handle advanced options form submission (training)
+  const handleAdvancedOptionsSubmit = async (e) => {
+    e.preventDefault();
+
+    // Perform model training with advanced options
+    console.log("Model training started with the following advanced options:");
+    console.log("Epochs:", epochs);
+    console.log("Learning Rate:", learningRate);
+    console.log("Batch Size:", batchSize);
+
+    // Make a POST request to trigger model training
+    try {
+      const response = await fetch("http://127.0.0.1:5000/train_cell", {
+        method: "POST",
+      });
+
+      if (response.ok) {
+        console.log("Model training initiated successfully");
+      } else {
+        console.error("Failed to initiate model training");
+      }
+    } catch (error) {
+      console.error("Error initiating model training:", error);
+    }
+  };
+
+  return (
+    <>
+      <div className="page-container">
+        <h1 className="title">Cell Detection</h1>
+        <div className="form-container">
+          <h2 className="subtitle">Model Architecture</h2>
+          <select
+            className="model-select"
+            value={selectedModel}
+            onChange={handleModelSelect}
+          >
+            <option value="">Select Model Architecture</option>
+            <option value="resnet">ResNet</option>
+            <option value="cnn">CNN</option>
+          </select>
+          {showCustomClasses && (
+            <div className="form-section">
+              <h3 className="form-title">Upload Images and Masks</h3>
+              <form className="upload-form" onSubmit={handleSubmit}>
+                <input
+                  className="class-input"
+>>>>>>> 8655ceccc37e8fd8d0bdcbd17d190dc036418d41
                   type="text"
                   placeholder="Enter Dataset Name"
                   value={datasetName}
                   onChange={handleDatasetNameChange}
                 />
+<<<<<<< HEAD
                 <FormTitle>Upload Cell Image Files</FormTitle>
                 <FileInputButton>
   Choose Images
@@ -629,18 +719,61 @@ const StarDistModelOption = ({ onClick }) => {
                   ))}
                 </EpochSelect>
                 <LearningRateInput
+=======
+                <input
+                  className="image-input"
+                  type="file"
+                  multiple
+                  onChange={handleImageUpload}
+                />
+                <input
+                  className="image-input"
+                  type="file"
+                  multiple
+                  onChange={handleMaskUpload}
+                />
+                <button className="submit-button" type="submit">
+                  Upload & Submit
+                </button>
+              </form>
+            </div>
+          )}
+          {showAdvancedOptions && (
+            <div className="form-section">
+              <h3 className="form-title">Advanced Options</h3>
+              <form onSubmit={handleAdvancedOptionsSubmit}>
+                <select
+                  className="epoch-select"
+                  value={epochs}
+                  onChange={handleEpochsChange}
+                >
+                  {[5, 6, 7, 8, 9, 10].map((epoch) => (
+                    <option key={epoch} value={epoch}>
+                      {epoch}
+                    </option>
+                  ))}
+                </select>
+                <input
+                  className="learning-rate-input"
+>>>>>>> 8655ceccc37e8fd8d0bdcbd17d190dc036418d41
                   type="number"
                   step="0.0001"
                   placeholder="Learning Rate"
                   value={learningRate}
                   onChange={handleLearningRateChange}
                 />
+<<<<<<< HEAD
                 <BatchSizeInput
+=======
+                <input
+                  className="batch-size-input"
+>>>>>>> 8655ceccc37e8fd8d0bdcbd17d190dc036418d41
                   type="number"
                   placeholder="Batch Size"
                   value={batchSize}
                   onChange={handleBatchSizeChange}
                 />
+<<<<<<< HEAD
                 <TrainButton type="submit">Train</TrainButton>
               </form>
             </FormSection>
@@ -668,3 +801,18 @@ const StarDistModelOption = ({ onClick }) => {
 };
 
 export default TrainCell;
+=======
+                <button className="train-button" type="submit">
+                  Train
+                </button>
+              </form>
+            </div>
+          )}
+        </div>
+      </div>
+    </>
+  );
+};
+export default TrainCell;
+
+>>>>>>> 8655ceccc37e8fd8d0bdcbd17d190dc036418d41

@@ -4,7 +4,11 @@ import { css } from "styled-components/macro"; //eslint-disable-line
 import AnimationRevealPage from "helpers/AnimationRevealPage.js";
 import Hero from "components/hero/TwoColumnWithInput.js";
 import Features from "components/features/ThreeColWithSideImage.js";
+<<<<<<< HEAD
 import MainFunctions from "components/MainFunctions/MainFunctions";
+=======
+
+>>>>>>> 8655ceccc37e8fd8d0bdcbd17d190dc036418d41
 
 import FAQ from "components/faqs/SingleCol.js";
 
@@ -19,6 +23,7 @@ export default () => {
   return (
     <AnimationRevealPage>
       <Hero roundedHeaderButton={true} />
+<<<<<<< HEAD
       <MainFunctions 
        
        heading={
@@ -28,6 +33,8 @@ export default () => {
          </>
        }
       />
+=======
+>>>>>>> 8655ceccc37e8fd8d0bdcbd17d190dc036418d41
       <Features
         subheading={<Subheading>Features</Subheading>}
         heading={
@@ -38,7 +45,10 @@ export default () => {
         }
       />
       
+<<<<<<< HEAD
     
+=======
+>>>>>>> 8655ceccc37e8fd8d0bdcbd17d190dc036418d41
       
       <FAQ
   subheading={<Subheading>Frequently Asked Questions</Subheading>}

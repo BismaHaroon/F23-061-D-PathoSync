@@ -1,6 +1,7 @@
 /* styles.css */
 
 .page-container {
+<<<<<<< HEAD
   margin-top: 2rem; /* Equivalent to my-8 (margin-top: 2rem;) */
   margin-bottom: 2rem; /* Equivalent to my-8 (margin-bottom: 2rem;) */
   margin-left: auto; /* Equivalent to mx-auto (margin-left: auto;) */
@@ -15,6 +16,21 @@
   margin-bottom: 0.5rem;
   text-align: left;
   margin-top: 0px;
+=======
+  margin-top: 8rem;
+  margin-bottom: 8rem;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 60rem;
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 1.5rem;
+  text-align: center;
+>>>>>>> 8655ceccc37e8fd8d0bdcbd17d190dc036418d41
 }
 
 .subtitle {
@@ -48,11 +64,19 @@
 }
 
 .form-container {
+<<<<<<< HEAD
   padding: 1.5rem; /* Equivalent to p-6 (padding: 1.5rem;) */
   margin-top: 1.5rem; /* Equivalent to mt-6 (margin-top: 1.5rem;) */
   border-radius: 0.5rem; /* Equivalent to rounded-lg (border-radius: 0.5rem;) */
   box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1); /* Equivalent to shadow-lg (box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);) */
   background-color: #e6e6fa !important;
+=======
+  padding: 1.5rem;
+  margin-top: 1.5rem;
+  border-radius: 1rem;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+>>>>>>> 8655ceccc37e8fd8d0bdcbd17d190dc036418d41
 }
 
 .form-title {
@@ -107,6 +131,7 @@
   color: #666;
   margin-bottom: 1rem;
 }
+<<<<<<< HEAD
 
 .Model-Select {
   width: 100%;
@@ -116,3 +141,5 @@
   color: #4b5563; /* text-gray-600 */
   margin-bottom: 0.25rem; /* mb-1 */
 }
+=======
+>>>>>>> 8655ceccc37e8fd8d0bdcbd17d190dc036418d41
