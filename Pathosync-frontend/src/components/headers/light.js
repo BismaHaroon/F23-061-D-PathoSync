@@ -22,7 +22,7 @@ export const NavLinks = tw.div`inline-block`;
  */
 export const NavLink = tw.a`
   text-lg my-2 lg:text-sm lg:mx-6 lg:my-0
-  font-semibold tracking-wide transition duration-300
+  font-bold tracking-wide transition duration-300
   pb-1 border-b-2 border-transparent hover:border-primary-500 hocus:text-primary-500
 `;
 
@@ -72,10 +72,10 @@ export default ({ roundedHeaderButton = false, logoLink, links, className, colla
    */
   const defaultLinks = [
     <NavLinks key={1}>
-      <NavLink href="/Uploading">Upload Image</NavLink>
-      <NavLink href="/AnnotateCell">Cell Annotation</NavLink>
-      <NavLink href="/AnnotateTissue">Tissue Annotation</NavLink>
-      <NavLink href="/AnnotateSAM">SAM Annotation</NavLink>
+      <NavLink href="/Uploading">Annotate Images</NavLink>
+      <NavLink href="/WSIUpload">Annotate WSI</NavLink>
+      <NavLink href="/TrainCell">Cellular Detection</NavLink>
+      <NavLink href="/TrainTissue">Tissue Classification</NavLink>
       <NavLink href="/#" tw="lg:ml-12!">
         Login
       </NavLink>

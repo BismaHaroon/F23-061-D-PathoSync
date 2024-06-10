@@ -3,21 +3,24 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@annotorious/react": "^3.0.0-rc.19",
     "@fortawesome/free-solid-svg-icons": "^6.5.1",
     "@fortawesome/react-fontawesome": "^0.2.0",
-    "@testing-library/jest-dom": "^5.16.0",
-    "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^14.4.3",
     "antd": "^5.12.1",
     "axios": "^1.6.2",
     "fabric": "^5.3.0",
     "feather-icons": "^4.29.1",
+    "file-saver": "^2.0.5",
     "framer-motion": "^7.10.3",
+    "image-js": "^0.35.5",
+    "jszip": "^3.10.1",
     "react": "^18.0.0",
     "react-anchor-link-smooth-scroll": "^1.0.12",
     "react-dom": "^18.0.0",
     "react-github-btn": "^1.4.0",
     "react-icons": "^4.12.0",
+    "react-image-file-resizer": "^0.4.8",
     "react-modal": "^3.16.1",
     "react-rnd": "^10.3.7",
     "react-router-dom": "^6.3.0",
@@ -26,12 +29,13 @@
     "slick-carousel": "^1.8.1",
     "styled-components": "^5.3.11",
     "tailwindcss": "^3.3.6",
+    "tiff-to-png": "^2.0.2",
     "twin.macro": "^3.4.0"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "jest",
     "eject": "react-scripts eject",
     "deploy": "yarn build && netlify deploy --prod --dir=build"
   },
@@ -59,5 +63,14 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@babel/preset-env": "^7.24.7",
+    "@babel/preset-react": "^7.24.7",
+    "@testing-library/jest-dom": "^6.4.5",
+    "@testing-library/react": "^16.0.0",
+    "babel-jest": "^29.7.0",
+    "jest": "^27.5.1",
+    "react-test-renderer": "^18.3.1"
   }
 }

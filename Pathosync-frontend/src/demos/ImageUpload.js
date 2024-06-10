@@ -6,16 +6,23 @@ import LoadingDialog from "components/Loading/LoadingDialog";
 import Header from "components/headers/light";
 import Footer from "components/footers/FiveColumnWithBackground";
 import OptionDialog from "components/AskAnnotationType/OptionDialoge";
+import ImageSelectDialog from './ImageSelectDialog';
+import JSZip from 'jszip';
+import { saveAs } from 'file-saver';
+import AnnotateCell from "./AnnotateCell";
+import AnnotateSAM from "./AnnotateSAM"
+import AnnotateTissue from "./AnnotateTissue"
 
-const Container = tw.div`flex flex-col items-center justify-center h-screen p-8`;
-const UploadWrapper = tw.div`mb-8 text-center space-x-2  text-2xl font-bold  text-purple-500  flex flex-col items-center`;
+
+const Container = tw.div`flex flex-col items-center justify-center min-h-screen p-8 bg-gray-100`;
+const UploadWrapper = tw.div`mb-8 text-center`;
+const UploadArea = tw.div`border-2 border-dashed border-gray-300 rounded-lg p-8 bg-white shadow-lg hover:border-gray-400 cursor-pointer`;
+const UploadIcon = tw.span`inline-block text-xl text-gray-500`;
+const Button = tw.button`mt-4 text-white px-8 py-2 rounded cursor-pointer transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none bg-purple-500 hover:bg-purple-600`;
+const Typography = tw.p`mb-4 text-lg text-gray-600`;
 const ImageWrapper = tw.div`mb-8 flex flex-col items-center`;
 const ImageBox = tw.div`border border-purple-500 rounded p-4 max-w-md w-full mx-auto`;
 const ImagePreview = tw.img`max-w-full h-auto rounded shadow-lg`;
-const Button = tw.button`mt-4 bg-primary-500 text-white px-6 py-3 rounded cursor-pointer`;
-const AnnotationText = tw.p`mt-4 bg-primary-500 text-lg`;
-const UnderlinedText = tw.span`text-purple-500 underline cursor-pointer`;
-const InputImage =  tw.div`mb-8 text-center space-x-2 text-2xl font-bold text-purple-500 underline  justify-center `;
 
 const ImageUploadPage = () => {
   const [uploadedImage, setUploadedImage] = useState(null);
@@ -25,18 +32,32 @@ const ImageUploadPage = () => {
   const [showOptionDialog, setShowOptionDialog] = useState(false);
   const navigate = useNavigate();
   const [selectedOption, setSelectedOption] = useState("");
+  const [uploadedImages, setUploadedImages] = useState([]); // Adjust to handle multiple images
+  const [selectedImage, setSelectedImage] = useState(null); // Store the selected image file
+  const [showImageSelectDialog, setShowImageSelectDialog] = useState(false);
+ 
+  const [selectedAnnotator, setSelectedAnnotator] = useState(null);
 
   const handleImageUpload = (event) => {
-    const file = event.target.files[0];
-    setUploadedImage(file);
+    const files = Array.from(event.target.files);
+    setUploadedImages(files);
+    setShowImageSelectDialog(true);
+  };
+  const handleImageSelection = (index) => {
+    const selectedFile = uploadedImages[index];
+    setSelectedImage(selectedFile);
+    setUploadedImage(selectedFile);
+    setShowImageSelectDialog(false); // Close the dialog after selection
+    // Proceed with the confirmation and processing for the selectedFile
   };
 
   const handleConfirm = async () => {
+    if (!selectedImage) return;
     setIsLoading(true);
 
     try {
       const formData = new FormData();
-      formData.append("image", uploadedImage);
+      formData.append("image", selectedImage);
 
       // Send a POST request to your Flask backend
       const response = await fetch("http://127.0.0.1:5000/upload", {
@@ -49,7 +70,7 @@ const ImageUploadPage = () => {
 
         // Fetch the processed image from the backend
         // Fetch the processed image from the backend using the same filename
-        const processedResponse = await fetch(`http://127.0.0.1:5000/uploads/${uploadedImage.name.split('.')[0]}_normalized.png`);
+        const processedResponse = await fetch(`http://127.0.0.1:5000/uploads/${selectedImage.name.split('.')[0]}_normalized.png`);
 
         if (processedResponse.ok) {
           const processedImageBlob = await processedResponse.blob();
@@ -68,113 +89,131 @@ const ImageUploadPage = () => {
   const handleOptionSelect = (option) => {
     setSelectedOption(option);
     setShowOptionDialog(false);
-    
+    switch (option) {
+      case "AnnotateCell":
+        setSelectedAnnotator(<AnnotateCell image={processedImage} />);
+        break;
+      case "AnnotateTissue":
+        setSelectedAnnotator(<AnnotateTissue image={processedImage} />);
+        break;
+      case "AnnotateSAM":
+        setSelectedAnnotator(<AnnotateSAM image={processedImage} />);
+        break;
+      default:
+        console.error("Unknown annotation option:", option);
+        return;
+    }
   
-    if (processedImage) {
-      const encodedProcessedImage = encodeURIComponent(processedImage);
+    // if (processedImage) {
+    //   const encodedProcessedImage = encodeURIComponent(processedImage);
   
-      // Determine the route based on the selected option
-      let route = "";
-      switch (option) {
-        case "AnnotateCell":
-          route = "/AnnotateCell";
-          break;
-        case "AnnotateTissue":
-          route = `/AnnotateTissue/${encodedProcessedImage}`;
-          break;
-        case "AnnotateSAM":
-          route = "/AnnotateSAM";
-          break;
-        default:
-          console.error("Unknown annotation option:", option);
-          return;
-      }
+    //   // Determine the route based on the selected option
+    //   let route = "";
+    //   switch (option) {
+    //     case "AnnotateCell":
+    //       route = "/AnnotateCell";
+    //       break;
+    //     case "AnnotateTissue":
+    //       route = `/AnnotateTissue/${encodedProcessedImage}`;
+    //       break;
+    //     case "AnnotateSAM":
+    //       route = "/AnnotateSAM";
+    //       break;
+    //     default:
+    //       console.error("Unknown annotation option:", option);
+    //       return;
+    //   }
   
       // Redirect to the determined route
-      navigate(route);
-    } else {
-      console.error("Processed image URL is undefined.");
-      // Handle the case where processedImage is undefined.
-    }
-  };
+     
 
+  };
+  const downloadDataset = async (uploadedImages) => {
+    const zip = new JSZip();
+    const uploadsFolder = zip.folder("uploads");
+    const masksFolder = zip.folder("masks");
+  
+    for (let i = 0; i < uploadedImages.length; i++) {
+      const image = uploadedImages[i];
+      uploadsFolder.file(image.name, image);
+  
+      const maskedResponse = await fetch(`http://127.0.0.1:5000/display_nuclick_mask?image=${image.name}`);
+      if (maskedResponse.ok) {
+        const maskedBlob = await maskedResponse.blob();
+        masksFolder.file(`masked_${image.name}`, maskedBlob);
+      }
+    }
+  
+    zip.generateAsync({ type: 'blob' }).then((content) => {
+      saveAs(content, 'dataset.zip');
+    });
+  };
   return (
     <>
       <Header />
       <Container>
+        <Typography>Drag & Drop or Upload Image</Typography>
         <UploadWrapper>
-          <label htmlFor="imageInput" css={tw`cursor-pointer justify-center hidden flex flex-col items-center `}>
-            <div css={tw`mb-8 text-center space-x-2  text-purple-500  text-2xl font-bold flex flex-col items-center `}>
-              <span>Click here to upload your image</span>
-              <br/>
-              </div>
-              <input
-  type="file"
-  id="imageInput"
-  accept="image/*"
-  onChange={handleImageUpload}
-  css={tw``}
-  style={{
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center',
-    textAlign: 'center',
-    marginTop: '1rem',
-  }}
-/>
-              <br/>
-           
-          </label>
+          <UploadArea >
+            <UploadIcon>📤</UploadIcon>
+            <p>Drag and drop your image here, or click to select a file to upload.</p>
+            <input
+             
+              type="file"
+              id="imageInput"
+              accept="image/*"
+              onChange={handleImageUpload}
+              multiple
+              css={tw`hidden`}
+            />
+          </UploadArea>
         </UploadWrapper>
-  
-        {uploadedImage && !isConfirmed && (
+        {showImageSelectDialog && (
+        <ImageSelectDialog
+          images={uploadedImages}
+          onSelect={handleImageSelection}
+          onClose={() => setShowImageSelectDialog(false)}
+          onDownloadDataset={() => downloadDataset(uploadedImages)}
+          
+        />
+      )}
+        {selectedImage && !isConfirmed && (
           <ImageWrapper>
             <ImageBox>
-              <p css={tw`text-lg font-bold`}>Uploaded Image:</p>
+              <Typography>Uploaded Image:</Typography>
               <ImagePreview
-                src={URL.createObjectURL(uploadedImage)}
+                src={URL.createObjectURL(selectedImage)}
                 alt="Uploaded Preview"
               />
             </ImageBox>
-            <Button
-              onClick={handleConfirm}
-              disabled={!uploadedImage}
-            >
+            <Button onClick={handleConfirm} disabled={!uploadedImage}>
               Confirm
             </Button>
           </ImageWrapper>
         )}
-  
-        {isConfirmed && (
+
+        {isConfirmed && processedImage && (
           <ImageWrapper>
             <ImageBox>
-              <p css={tw`text-lg font-bold`}>Processed Image:</p>
-              <ImagePreview
-                src={processedImage}
-                alt="Processed Preview"
-              />
+              <Typography>Processed Image:</Typography>
+              <ImagePreview src={processedImage} alt="Processed Preview" />
             </ImageBox>
           </ImageWrapper>
         )}
-  
+
         {isLoading && <LoadingDialog message="Preprocessing Image..." />}
-  
+
         {isConfirmed && !showOptionDialog && (
-          <AnnotationText>
-            Image Confirmed.{' '}
-            <UnderlinedText
-              onClick={() => setShowOptionDialog(true)}
-            >
-              Select annotation type.
-            </UnderlinedText>
-          </AnnotationText>
+          <div css={tw`mt-4`}>
+            <Button onClick={() => setShowOptionDialog(true)}>Select Annotation Type</Button>
+          </div>
         )}
-  
+
         {showOptionDialog && (
           <OptionDialog onClose={() => setShowOptionDialog(false)} onOptionSelect={handleOptionSelect} />
         )}
       </Container>
+      {selectedAnnotator}
       <Footer />
     </>
   );

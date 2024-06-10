@@ -4,7 +4,7 @@ import { css } from "styled-components/macro"; //eslint-disable-line
 import AnimationRevealPage from "helpers/AnimationRevealPage.js";
 import Hero from "components/hero/TwoColumnWithInput.js";
 import Features from "components/features/ThreeColWithSideImage.js";
-
+import MainFunctions from "components/MainFunctions/MainFunctions";
 
 import FAQ from "components/faqs/SingleCol.js";
 
@@ -19,6 +19,15 @@ export default () => {
   return (
     <AnimationRevealPage>
       <Hero roundedHeaderButton={true} />
+      <MainFunctions 
+       
+       heading={
+         <>
+          
+           <HighlightedText> Features </HighlightedText> Offered 
+         </>
+       }
+      />
       <Features
         subheading={<Subheading>Features</Subheading>}
         heading={
@@ -29,6 +38,7 @@ export default () => {
         }
       />
       
+    
       
       <FAQ
   subheading={<Subheading>Frequently Asked Questions</Subheading>}

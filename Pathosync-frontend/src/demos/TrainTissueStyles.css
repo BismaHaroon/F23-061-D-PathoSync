@@ -1,0 +1,211 @@
+/* TrainTissueStyles.css */
+
+/* Global styles */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* Container styles */
+.my-8 {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.mx-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.max-w-4xl {
+  max-width: 64rem;
+}
+
+/* Title styles */
+.title {
+  font-size: 2rem;
+  font-weight: 900;
+  color: #6f18f2;  /*Purple color*/
+  margin-bottom: 0.5rem;
+  text-align: left;
+  margin-top: 0px;
+}
+
+.page-container {
+  padding-top: 0;
+}
+
+
+
+/* Subtitle styles */
+.subtitle {
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: #37097d; /* Medium gray color */
+  margin-bottom: 1rem;
+}
+
+/* Form container styles */
+.form-container {
+  padding: 1.5rem;
+  margin-top: 1.5rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
+}
+
+/* Form section styles */
+.form-section {
+  margin-bottom: 1.5rem;
+}
+
+/* Form title styles */
+.form-title {
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+/* Form input styles */
+.class-input,
+.image-input,
+.dataset-input,
+.learning-rate-input,
+.batch-size-input,
+.epoch-select,
+.model-select {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 0.25rem;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+/* Submit button styles */
+.submit-button,
+.add-class-button,
+.train-button {
+  width: 100%;
+  padding: 0.75rem;
+  font-weight: bold;
+  color: #4f2b2b;
+  border: none;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  background-color: #650d59; /* Updated background color */
+}
+
+.submit-button:hover,
+.add-class-button:hover,
+.train-button:hover {
+  background-color: #3666af; /* Darker background color on hover */
+}
+
+/* Add class button styles */
+.add-class-button {
+  background-color: #3cba54;
+}
+
+/* Train button styles */
+.train-button {
+  background-color: #ffcc00;
+}
+
+/* Custom file upload styles */
+.custom-file-upload {
+  height: 200px;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: 2px dashed #e8e8e8;
+  background-color: #9772e2;
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0px 48px 35px -48px #e8e8e8;
+  margin-bottom: 0.5rem;
+}
+
+.custom-file-upload .icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.custom-file-upload .icon svg {
+  height: 80px;
+  fill: #e8e8e8;
+}
+
+.custom-file-upload .text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.custom-file-upload .text span {
+  font-weight: 400;
+  color: #e8e8e8;
+}
+
+.custom-file-upload input {
+  display: none;
+}
+
+/* CLASS CONTAINERS */
+.class-container {
+  border: 1px solid #ccc;
+  border-radius: 0.25rem;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  background-color: #f0ecf1;
+}
+
+/* CSS for class wrapper */
+.class-wrapper {
+  display: flex;
+  align-items: flex-start; /* Align items at the top */
+  margin-bottom: 10px; /* Adjust as needed */
+}
+
+/* CSS for file names container */
+.file-names-container {
+  width: 500px; /* Adjust the width as needed */
+  height: 200px; /* Adjust the height as needed */
+  overflow-y: auto; /* Enable vertical scrolling */
+  border: 1px solid #ccc; /* Add border */
+  flex-shrink: 0;
+}
+
+/* CSS for file names table */
+.file-names-table {
+  width: 100%; /* Make the table width 100% */
+}
+
+/* CSS for file name table rows */
+.file-names-table tr td {
+  padding: 5px;
+  border-bottom: 1px solid #ccc; /* Add border bottom to separate rows */
+}
+
+/* CSS for file names */
+.file-names-table tr:last-child td {
+  border-bottom: none; /* Remove border bottom for the last row */
+}
+
+
+.upload-container {
+  flex-grow: 1; /* Take remaining space */
+}
+
+.upload-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px; /* Adjust margin as needed */
+  margin-top: 10px;
+}
