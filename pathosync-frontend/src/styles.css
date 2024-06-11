@@ -1,0 +1,64 @@
+/* src/styles.css */
+input[type="text"], input[type="number"], select, button {
+    border: 2px solid #3d3c40;
+    padding: 2px;
+    margin: 5px 0;
+    box-sizing: border-box;
+    border-radius: 4px;
+    margin:10px;
+}
+
+button {
+    background-color: #8eb3e4; /* Green */
+    color: rgb(11, 0, 0);
+    padding: 10px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border: 1px solid #3d3c40;
+    border-radius: 4px;
+}
+
+button:hover {
+    background-color: #c384ed;
+}
+
+.carousel img {
+    width: 100%;
+    height: auto;
+}
+
+/* h1, h2, h3, h4, h5, h6 {
+    color: #333;
+    font-family: Arial, sans-serif;
+    margin-bottom: 15px;
+    margin: 10px;
+    } */
+
+/* Specific heading styles */
+h1 {
+    font-size: 24px;
+    /* border-bottom: 2px solid #4c57af; Green underline */
+    padding-bottom: 5px;
+    font-weight: bold;
+    margin:10px
+}
+h2 {
+    font-size: 24px;
+    /* border-bottom: 2px solid #4c57af; Green underline */
+    padding-bottom: 5px;
+}
+
+h4 {
+    font-size: 20px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+p, label {
+    margin-left: 15px;
+}
