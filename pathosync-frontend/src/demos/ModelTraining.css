@@ -1,0 +1,198 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.footer-container {
+    margin-top: 250px; /* Adjust margin as needed */
+  }
+  
+
+.heading {
+  font-size: 3rem;
+  font-weight: 900;
+  color: #8a2be2;  /*Purple color*/
+  margin-top: 10%;
+  
+}
+
+
+/* Add styles for the rest of your components */
+.upload-wrapper {
+  margin-bottom: 8px;
+  text-align: center;
+  /* Add more styles as needed */
+}
+
+.image-wrapper {
+  margin-bottom: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* Add more styles as needed */
+}
+
+.image-box {
+  border: 1px solid #8a2be2;
+  border-radius: 4px;
+  padding: 4px;
+  max-width: 600px;
+  width: 100%;
+  margin: 0 auto;
+  /* Add more styles as needed */
+}
+
+.image-preview {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  /* Add more styles as needed */
+}
+
+.button {
+  margin-top: 16px;
+  background-color: #4b0082; /* Deep purple color */
+  color: rgb(45, 32, 32);
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  /* Add more styles as needed */
+}
+
+.annotation-text {
+  margin-top: 16px;
+  background-color: #4b0082; /* Deep purple color */
+  font-size: 1.25rem;
+  color: white;
+  /* Add more styles as needed */
+}
+
+.underlined-text {
+  color: #8a2be2; /* Purple color */
+  text-decoration: underline;
+  cursor: pointer;
+  /* Add more styles as needed */
+}
+
+.input-image {
+    margin-bottom: 8px;
+    text-align: center;
+    /* Add more styles as needed */
+  }
+
+
+
+/* BUTTONS STYLING */
+.btn {
+    display: block;
+    padding: 0.7em 1em;
+    background: transparent;
+    outline: none;
+    border: 0;
+    color: #ffffff;
+    letter-spacing: 0.1em;
+    font-family: monospace;
+    font-size: 17px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 1;
+    margin: 0 40px;
+  }
+
+  .button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 100px; /* Adjust margin as needed */
+  }
+
+  .cube {
+    position: relative;
+    transition: all 0.5s;
+  }
+  
+  .cube .bg-top {
+    position: absolute;
+    height: 10px;
+    background: #8a2be2;
+    bottom: 100%;
+    left: 5px;
+    right: -5px;
+    transform: skew(-45deg, 0);
+    margin: 0;
+    transition: all 0.4s;
+  }
+  
+  .cube .bg-top .bg-inner {
+    bottom: 0;
+  }
+  
+  .cube .bg {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    top: 0;
+    right: 0;
+    background: #8a2be2;
+    transition: all 0.4s;
+  }
+  
+  .cube .bg-right {
+    position: absolute;
+    background: #8a2be2;
+    top: -5px;
+    z-index: 0;
+    bottom: 5px;
+    width: 10px;
+    left: 100%;
+    transform: skew(0, -45deg);
+    transition: all 0.4s;
+  }
+  
+  .cube .bg-right .bg-inner {
+    left: 0;
+  }
+  
+  .cube .bg-inner {
+    background: #28282d;
+    position: absolute;
+    left: 2px;
+    right: 2px;
+    top: 2px;
+    bottom: 2px;
+  }
+  
+  .cube .text {
+    position: relative;
+    transition: all 0.4s;
+  }
+  
+  .cube:hover .bg-inner {
+    background: #8a2be2;
+    transition: all 0.4s;
+  }
+  
+  .cube:hover .text {
+    color: #28282d;
+    transition: all 0.4s;
+  }
+  
+  .cube:hover .bg-right,
+  .cube:hover .bg,
+  .cube:hover .bg-top {
+    background: #28282d;
+  }
+  
+  .cube:active {
+    z-index: 9999;
+    animation: bounce 0.1s linear;
+  }
+  
+  @keyframes bounce {
+    50% {
+      transform: scale(0.9);
+    }
+  }
+  

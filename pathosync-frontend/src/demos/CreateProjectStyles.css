@@ -1,0 +1,171 @@
+.createProjectContainer {
+    margin: 20px;
+    padding: 20px;
+    padding-top: 10px;
+    border: 1px solid #cccccc;
+    border-radius: 8px;
+    background-color: #e2eaf6;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+.createProjectContainer h1 {
+    color: #333;
+    font-size: 24px;
+    font-weight: bold;
+    margin:10px
+}
+.createProjectContainer h2 {
+    color: #333;
+    
+    font-weight: bold;
+}
+.createProjectContainer h3 {
+    color: #4f4f4f;
+    
+    font-weight: bold;
+}
+.createProjectContainer form {
+    display: flex;
+    flex-direction: column;
+}
+
+.label-input-group {
+    margin-bottom: 10px;
+}
+
+select {
+    padding: 8px;
+    margin-top: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    height: 35px;
+    margin-left: 25px;
+    width: 40%;
+}
+
+input {
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    height: 35px;
+    margin-left: 20px;
+    width: 40%;
+}
+
+.label-input-group label {
+    color: #333;  /* Set the color of the label text */
+      /* Make the label text bold */
+    display: block;  /* Make labels block to add space between label and input */
+    margin-bottom: 5px;  /* Space between label and input */
+   
+}
+
+button {
+    margin-top: 10px;
+    padding: 10px 15px;
+    
+    color: rgb(255, 255, 255);
+    background-color: #201726;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    background-color:  #7946FD !important;
+    border: solid;
+}
+
+button:hover {
+    background-color: #5a00b3 !important;
+}
+
+.remove-btn {
+    padding: 5px 10px;
+    font-size: 15px;
+    margin-left: 10px;
+    background-color: #7946FD !important;
+    color: white;
+   
+}
+
+
+.remove-btn:hover {
+    background-color: #380b6c !important;
+}
+
+.add-btn {
+    padding: 8px 12px;
+    background-color: #7946FD !important;
+    color: white;
+}
+
+.add-btn:hover {
+    background-color: #380b6c !important;
+}
+.create-project-btn {
+    background-color: #7946FD !important;  /* Distinct green background for the create project button */
+    padding: 10px 20px;  /* Larger padding for better visibility */
+    color: white;
+    margin-top: 10px;
+}
+
+.create-project-btn:hover {
+    background-color: #380b6c !important;  /* Darker green on hover */
+}
+input[type="text"]::placeholder {
+    color: #aaa;
+    
+}
+
+
+.projectContainer {
+    margin: 10px 0;
+    padding: 15px;
+    border: 1px solid #cccccc;
+    border-radius: 8px;
+    background-color: #E2E4FF;
+    color: #1A202C;
+    height: fit-content;
+}
+.projectContainer:hover {
+    background-color: #f7f2f7;  /* Lighter grey on hover */
+}
+.projectContainer p {
+    margin: 5px 0; /* Reduces space between lines */
+    color: #1A202C;
+}
+
+.projectContainer strong {
+    font-weight: bold; /* Ensure the label is bold */
+    color: #1A202C;
+}
+
+.projectContainer span {
+    font-weight: normal; /* Ensure the value is normal weight */
+    color: #1A202C;
+}
+
+.popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .popup-content {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+  }
+  
+  .popup-content button {
+    margin: 10px;
+    padding: 10px 20px;
+    cursor: pointer;
+  }
+  
+  
