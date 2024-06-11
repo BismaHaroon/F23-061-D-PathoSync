@@ -75,12 +75,15 @@ https://github.com/BismaHaroon/F23-061-D-PathoSync/assets/125141049/3268db09-f36
 
 - **WSI Annotation**
 
-https://github.com/BismaHaroon/F23-061-D-PathoSync/assets/125141049/ea65a372-eb7f-4625-8784-ba093fdd4ec0
+
+
+Uploading WSI Annotate - Made with Clipchamp.mp4…
+
 
 
 ### Visualization
 - **Visual Magnification:** Offers a visual magnification feature for detailed views of cellular and tissue structures.
-- **Tissue Masking:** Provides tissue masking capabilities for enhanced visibility and focus during the annotation process.
+- **Cell Masking:** Provides tissue masking capabilities for enhanced visibility and focus during the annotation process.
 
 ### Customizable Cell Detection Pipeline
 - **Upload Custom Datasets:** Easily upload custom datasets for tailored analysis and model training.
