@@ -1,6 +1,7 @@
 # PathoSync: Enhancing Pathology with Synchronized AI
 
-<img width="900" alt="image" src="https://github.com/BismaHaroon/F23-061-D-PathoSync/assets/125575282/0dcd5060-a5c8-440e-b63e-7de91ac05283">
+![landingpage](https://github.com/BismaHaroon/F23-061-D-PathoSync/assets/125141049/f750419c-832c-49d7-9fc0-b5a9b04003b8)
+
 
 PathoSync is a revolutionary project designed to transform the landscape of digital pathology by introducing a cutting-edge platform that seamlessly integrates artificial intelligence (AI) with the expertise of pathologists. This innovative solution aims to address the challenges inherent in conventional pathology tools, offering a user-friendly experience that elevates diagnostic accuracy and streamlines workflows for medical professionals.
 
