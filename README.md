@@ -47,8 +47,8 @@ https://github.com/BismaHaroon/F23-061-D-PathoSync/assets/125141049/76ed5b81-80b
 
 ### Tissue Annotation
 
-https://github.com/BismaHaroon/F23-061-D-PathoSync/assets/125141049/d6472c2b-45da-4b83-a128-60e9c7362558
 
+https://github.com/BismaHaroon/F23-061-D-PathoSync/assets/125141049/6510e1a6-06fe-4c6a-8fd5-6ff5ce7d3898
 
 
 
