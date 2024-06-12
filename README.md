@@ -86,15 +86,10 @@ https://github.com/BismaHaroon/F23-061-D-PathoSync/assets/125141049/b752ee79-917
 - **Upload Custom Datasets:** Easily upload custom datasets for tailored analysis and model training.
 
 
-https://github.com/BismaHaroon/F23-061-D-PathoSync/assets/125141049/39965fd8-f7d9-496d-b78b-dd692e9388aa
-
 
 
 - **Build Custom Models:** Construct custom models to suit specific pathology requirements.
 - **Advanced Model Training Features:**  Utilize advanced model training features such as epochs, batch size, and learning rate for optimal results.
-
-
-https://github.com/BismaHaroon/F23-061-D-PathoSync/assets/125141049/f6e95136-a888-425d-9639-9c46184e0ffc
 
 
 
@@ -102,7 +97,11 @@ https://github.com/BismaHaroon/F23-061-D-PathoSync/assets/125141049/f6e95136-a88
 - **Predict using saved models:** Once trained, select models for cell prediction, upload test images, and view results instantly.
 
 
-https://github.com/BismaHaroon/F23-061-D-PathoSync/assets/125141049/70d796fa-1fc5-4800-b068-7f0a0b64b5cd
+
+
+https://github.com/BismaHaroon/F23-061-D-PathoSync/assets/125141049/a4d69b3d-f973-43ce-8c62-95fd608264c7
+
+
 
 
 ## Customizable Tissue Classification Pipeline
