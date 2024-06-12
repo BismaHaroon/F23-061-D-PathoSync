@@ -30,7 +30,11 @@ https://github.com/BismaHaroon/F23-061-D-PathoSync/assets/125141049/d59a2ccc-6c7
 ### Cellular Annotation
 - **NuClick:** Incorporates NuClick for point annotations and labeling at the cellular level.
 
-https://github.com/BismaHaroon/F23-061-D-PathoSync/assets/125141049/3f74734d-f64f-49a6-955e-c483a5a74bd5
+
+
+
+https://github.com/BismaHaroon/F23-061-D-PathoSync/assets/125141049/71c432df-40f9-4d2f-b8eb-100662eef217
+
 
 
   <img width="672" alt="image" src="https://github.com/BismaHaroon/F23-061-D-PathoSync/assets/125575282/7717c11d-0069-4b47-8917-44500affa006">
@@ -38,7 +42,11 @@ https://github.com/BismaHaroon/F23-061-D-PathoSync/assets/125141049/3f74734d-f64
 - **SAM:** Utilizes SAM for bounding box annotations and labeling, enhancing cellular annotation accuracy.
 
 
-https://github.com/BismaHaroon/F23-061-D-PathoSync/assets/125141049/76ed5b81-80b2-4df3-822c-7b0b1b7708eb
+
+
+
+https://github.com/BismaHaroon/F23-061-D-PathoSync/assets/125141049/f30ccc4a-0986-4171-aa53-345e8a861e38
+
 
 
   <img width="491" alt="image" src="https://github.com/BismaHaroon/F23-061-D-PathoSync/assets/125575282/115b9a90-bd6a-4eb2-9594-7b93f6d142d9">
