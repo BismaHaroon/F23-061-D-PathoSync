@@ -117,17 +117,12 @@ https://github.com/BismaHaroon/F23-061-D-PathoSync/assets/125141049/70d796fa-1fc
 -**Custom Model Building:** Users have the flexibility to build custom models suited to their specific requirements, enabling advanced classification tasks.
 
 -**Advanced Model Training Features:** PathoSync provides the capability to input advanced model training features such as epochs, batch size, and learning rate, enabling users to fine-tune their models for optimal performance and desired results.
-**ConVNet**
-
-
-https://github.com/BismaHaroon/F23-061-D-PathoSync/assets/125141049/b91316ae-1ec6-4a0d-843f-0247713b5ae9
 
 
 
-**ResNet**
 
+https://github.com/BismaHaroon/F23-061-D-PathoSync/assets/125141049/d2db69fd-70c7-4e6c-98b5-1e1b5acfbab6
 
-https://github.com/BismaHaroon/F23-061-D-PathoSync/assets/125141049/b48fede8-8a0b-4bdb-a061-295161da3559
 
 
 
