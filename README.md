@@ -70,15 +70,11 @@ https://github.com/BismaHaroon/F23-061-D-PathoSync/assets/125141049/6510e1a6-06f
   <img width="571" alt="image" src="https://github.com/BismaHaroon/F23-061-D-PathoSync/assets/125575282/717ee6c5-73bf-4286-b083-bed37f90febb">
 
 ### WSI Patch Annotations
-- **Tissue Prediction**
-
-https://github.com/BismaHaroon/F23-061-D-PathoSync/assets/125141049/3268db09-f364-4d75-863b-e64dcea162f0
-
-- **WSI Annotation**
 
 
 
-Uploading WSI Annotate - Made with Clipchamp.mp4…
+https://github.com/BismaHaroon/F23-061-D-PathoSync/assets/125141049/b752ee79-9179-421f-810b-5bef1a590c4e
+
 
 
 
