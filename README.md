@@ -121,15 +121,14 @@ https://github.com/BismaHaroon/F23-061-D-PathoSync/assets/125141049/70d796fa-1fc
 
 
 
-https://github.com/BismaHaroon/F23-061-D-PathoSync/assets/125141049/d2db69fd-70c7-4e6c-98b5-1e1b5acfbab6
-
-
-
 
 ## Tissue Classification
 - Once the model is trained, it is saved and can be conveniently selected for prediction tasks.
 - Users can upload test images, and the results are promptly displayed for analysis.
 - Users have the option to choose from pre-trained DenseNet, ResNet, and AlexNet models trained on the Kather100k dataset, further expanding the versatility of the classification process.
+
+https://github.com/BismaHaroon/F23-061-D-PathoSync/assets/125141049/d2db69fd-70c7-4e6c-98b5-1e1b5acfbab6
+
 
 ## Table of Contents
 
