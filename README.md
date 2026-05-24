@@ -42,8 +42,6 @@ PathoSync prioritizes accessibility, providing a user-friendly interface that em
 
 
 
-https://github.com/BismaHaroon/F23-061-D-PathoSync/assets/125141049/f30ccc4a-0986-4171-aa53-345e8a861e38
-
 
 
   <img width="491" alt="image" src="https://github.com/BismaHaroon/F23-061-D-PathoSync/assets/125575282/115b9a90-bd6a-4eb2-9594-7b93f6d142d9">
