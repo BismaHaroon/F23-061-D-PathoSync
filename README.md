@@ -15,7 +15,6 @@ PathoSync prioritizes accessibility, providing a user-friendly interface that em
 - **Standard Resolution:** Images are standardized to a resolution of 600x400 pixels.
 
 
-https://github.com/BismaHaroon/F23-061-D-PathoSync/assets/125141049/d59a2ccc-6c72-4a1a-a454-dd525ecfab26
 
 
 
