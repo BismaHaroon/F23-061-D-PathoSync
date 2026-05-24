@@ -52,7 +52,6 @@ PathoSync prioritizes accessibility, providing a user-friendly interface that em
 ### Tissue Annotation
 
 
-https://github.com/BismaHaroon/F23-061-D-PathoSync/assets/125141049/6510e1a6-06fe-4c6a-8fd5-6ff5ce7d3898
 
 
 
