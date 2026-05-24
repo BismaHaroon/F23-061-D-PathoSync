@@ -71,11 +71,9 @@ PathoSync prioritizes accessibility, providing a user-friendly interface that em
 - **Preprocessing:** Streamlines WSI preprocessing by efficiently extracting patches for detailed examination.
   <img width="571" alt="image" src="https://github.com/BismaHaroon/F23-061-D-PathoSync/assets/125575282/717ee6c5-73bf-4286-b083-bed37f90febb">
 
-### WSI Patch Annotations
 
 
 
-https://github.com/BismaHaroon/F23-061-D-PathoSync/assets/125141049/b752ee79-9179-421f-810b-5bef1a590c4e
 
 
 
@@ -101,7 +99,6 @@ https://github.com/BismaHaroon/F23-061-D-PathoSync/assets/125141049/b752ee79-917
 
 
 
-https://github.com/BismaHaroon/F23-061-D-PathoSync/assets/125141049/a4d69b3d-f973-43ce-8c62-95fd608264c7
 
 
 
@@ -124,7 +121,6 @@ https://github.com/BismaHaroon/F23-061-D-PathoSync/assets/125141049/a4d69b3d-f97
 - Users can upload test images, and the results are promptly displayed for analysis.
 - Users have the option to choose from pre-trained DenseNet, ResNet, and AlexNet models trained on the Kather100k dataset, further expanding the versatility of the classification process.
 
-https://github.com/BismaHaroon/F23-061-D-PathoSync/assets/125141049/d2db69fd-70c7-4e6c-98b5-1e1b5acfbab6
 
 
 ## Table of Contents
